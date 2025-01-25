@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5yp6upiavrhw"]
+[gd_scene load_steps=21 format=3 uid="uid://5yp6upiavrhw"]
 
 [ext_resource type="Script" path="res://scripts/UI/Button.cs" id="1_d1ekg"]
 [ext_resource type="Texture2D" uid="uid://ck6d7vk5l2ndj" path="res://assets/UI_Big_Play_Button-sheet.png" id="1_nvj8y"]
@@ -23,6 +23,24 @@ region_rect = Rect2(96, 32.75, 96, 31.25)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfh4q"]
 texture = ExtResource("1_nvj8y")
 region_rect = Rect2(1.5, 31.25, 94, 31)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cylr4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x0iso"]
+texture = ExtResource("6_fmr5k")
+region_rect = Rect2(143.613, 97.5711, 94.6333, 28.0395)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d2xdq"]
+texture = ExtResource("6_fmr5k")
+region_rect = Rect2(144.25, 97.2524, 93.0402, 28.3581)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hx2j"]
+texture = ExtResource("6_fmr5k")
+region_rect = Rect2(143.595, 96.2508, 93.0402, 29.9513)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ok0su"]
+texture = ExtResource("6_fmr5k")
+region_rect = Rect2(144.549, 49.2939, 92.7534, 30.4046)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycq8v"]
 atlas = ExtResource("6_qj6od")
@@ -64,6 +82,17 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_6a33g")
 theme_override_styles/hover = SubResource("StyleBoxTexture_12o50")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tndi7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hfh4q")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 444.0
+offset_top = 163.0
+offset_right = 623.0
+offset_bottom = 233.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cylr4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x0iso")
+theme_override_styles/hover = SubResource("StyleBoxTexture_d2xdq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1hx2j")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ok0su")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 31.0
