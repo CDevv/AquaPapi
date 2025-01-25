@@ -45,11 +45,20 @@ namespace AquaPapi.Autoload
 
         public override void _Ready()
         {
+            LoadCursor();
+
             GarbageInfo = new();
             BubblesInfo = new();
             Random = new RandomNumberGenerator();
             GetGarbageInfo();
             GetBubblesInfo();
+        }
+
+        private void LoadCursor()
+        {
+            var arrow = ResourceLoader.Load("res://assets/cursor_normal.png");
+
+            Input.SetCustomMouseCursor(arrow);
         }
 
         private void GetGarbageInfo()

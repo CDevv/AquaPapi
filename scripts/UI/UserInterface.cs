@@ -4,6 +4,9 @@ using System;
 
 public partial class UserInterface : CanvasLayer
 {
+    [Signal]
+    public delegate void GameStartedEventHandler();
+
     private Global global;  // Reference to the global object
     private Button play;
     private Button shop;
@@ -56,8 +59,11 @@ public partial class UserInterface : CanvasLayer
                 global.IsInWater = true;
             }
 
-            // Start the game logic here (you can add any custom game-start logic you need)
-            StartGame();
+            if (!global.IsInWater)
+            {
+                // Start the game logic here (you can add any custom game-start logic you need)
+                StartGame();
+            }
         }
     }
 
@@ -76,10 +82,14 @@ public partial class UserInterface : CanvasLayer
 
     private void StartGame()
     {
+        EmitSignal(SignalName.GameStarted);
+
         ToggleStatsUI(true);
 
         play.Visible = false;
         shop.Visible = false;
+
+        global.CurrentScene.Player.PlayAnimation("falling-1");
 
         // You can add additional game start logic here
         GD.Print("Game Started!");
