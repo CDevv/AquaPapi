@@ -29,7 +29,7 @@ namespace AquaPapi.Components
             }
 
             Type = type;
-            sprite.Frame = type - 1;
+            sprite.Frame = type;
             Value = global.BubblesInfo[global.Level][type][0];
         }
 

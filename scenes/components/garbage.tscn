@@ -51,6 +51,7 @@ scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_25j6c")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("RectangleShape2D_cia3x")

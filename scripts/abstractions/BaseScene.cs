@@ -88,12 +88,15 @@ namespace AquaPapi.Abstractions
 
         private void OnGarbageCollision(float value)
         {
-            GD.Print("Garbage collected: ", value);
+            Global.Treats += (int)value;
+            GD.Print("Treats:", Global.Treats);
         }
 
         private void OnBubbleCollision(float value)
         {
-            GD.Print("Bubble collected");
+            int oxygenChange = (int)Mathf.Clamp(value, 0, Global.MaxOxygen - Global.Oxygen);
+            Global.Oxygen += oxygenChange;
+            GD.Print("Oxygen: ", Global.Oxygen);
         }
     }
 }
