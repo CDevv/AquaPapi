@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://buqu04u666uph"]
+[gd_scene load_steps=15 format=3 uid="uid://buqu04u666uph"]
 
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="1_5aoco"]
 [ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_qmpyw"]
 [ext_resource type="PackedScene" uid="uid://daft73gb52td2" path="res://scenes/components/garbage.tscn" id="2_t1uja"]
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_ahl6h"]
+[ext_resource type="Texture2D" uid="uid://ck6d7vk5l2ndj" path="res://UI_Big_Play_Button-sheet.png" id="5_y74ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu1yg"]
 size = Vector2(184, 16)
@@ -13,6 +14,26 @@ size = Vector2(3200, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ly7j"]
 size = Vector2(3200, 1312)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1osqv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaa0p"]
+texture = ExtResource("5_y74ab")
+region_rect = Rect2(97, 36, 95, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q20q1"]
+texture = ExtResource("5_y74ab")
+region_rect = Rect2(97, 36, 95, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0hogn"]
+texture = ExtResource("5_y74ab")
+region_rect = Rect2(97, 35.25, 95, 27.75)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ku38"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h7uai"]
+texture = ExtResource("5_y74ab")
+region_rect = Rect2(2, 32.75, 92.5, 30)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qmpyw")
@@ -59,3 +80,15 @@ shape = SubResource("RectangleShape2D_3ly7j")
 [node name="GarbageContainer" type="Node" parent="."]
 
 [node name="BubblesContainer" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1570.0
+offset_top = 128.0
+offset_right = 1756.0
+offset_bottom = 206.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1osqv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kaa0p")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_q20q1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0hogn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_8ku38")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h7uai")
