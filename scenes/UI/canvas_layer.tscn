@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://5yp6upiavrhw"]
+[gd_scene load_steps=11 format=3 uid="uid://5yp6upiavrhw"]
 
 [ext_resource type="Script" path="res://scripts/UI/Button.cs" id="1_d1ekg"]
 [ext_resource type="Texture2D" uid="uid://ck6d7vk5l2ndj" path="res://UI_Big_Play_Button-sheet.png" id="1_nvj8y"]
+[ext_resource type="Texture2D" uid="uid://cd4igtpaf5odj" path="res://Oxygen_Bar34.png" id="3_cqa6h"]
+[ext_resource type="Texture2D" uid="uid://ddtytvcjsploo" path="res://Oxygen_Bar6.png" id="4_8byr8"]
+[ext_resource type="Texture2D" uid="uid://c6ggso5vwk3ni" path="res://Oxygen_Bar5.png" id="4_h1073"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adp6i"]
 
@@ -38,8 +41,22 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_12o50")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tndi7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hfh4q")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 803.0
+offset_top = 58.0
+offset_right = 1312.0
+offset_bottom = 196.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_cqa6h")
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_right = 256.0
-offset_bottom = 40.0
+offset_left = 873.0
+offset_top = 58.0
+offset_right = 1382.0
+offset_bottom = 198.0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_under = ExtResource("4_8byr8")
+texture_progress = ExtResource("4_h1073")
 
 [connection signal="pressed" from="Button" to="." method="OnButtonPressed"]
