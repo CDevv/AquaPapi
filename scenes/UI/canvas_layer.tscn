@@ -65,18 +65,18 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tndi7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hfh4q")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 77.0
-offset_top = 23.0
-offset_right = 586.0
-offset_bottom = 161.0
+offset_left = 41.0
+offset_top = 33.0
+offset_right = 550.0
+offset_bottom = 171.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_cqa6h")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 147.0
-offset_top = 23.0
-offset_right = 656.0
-offset_bottom = 163.0
+offset_left = 111.0
+offset_top = 33.0
+offset_right = 620.0
+offset_bottom = 173.0
 scale = Vector2(0.5, 0.5)
 value = 50.0
 texture_under = ExtResource("4_8byr8")
@@ -85,6 +85,6 @@ texture_progress = ExtResource("4_h1073")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(939, 45)
 sprite_frames = SubResource("SpriteFrames_ywggc")
-frame_progress = 0.436088
+frame_progress = 0.923315
 
 [connection signal="pressed" from="Button" to="." method="OnButtonPressed"]
