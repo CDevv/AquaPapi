@@ -57,8 +57,10 @@ namespace AquaPapi.Autoload
         private void LoadCursor()
         {
             var arrow = ResourceLoader.Load("res://assets/cursor_normal.png");
+            var arrowHover = ResourceLoader.Load("res://assets/cursor_hover.png");
 
             Input.SetCustomMouseCursor(arrow);
+            Input.SetCustomMouseCursor(arrowHover, Input.CursorShape.PointingHand);
         }
 
         private void GetGarbageInfo()

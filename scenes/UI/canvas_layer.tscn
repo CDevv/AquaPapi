@@ -96,6 +96,7 @@ offset_left = 349.12
 offset_top = 57.12
 offset_right = 535.12
 offset_bottom = 135.12
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_adp6i")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_6a33g")
 theme_override_styles/hover = SubResource("StyleBoxTexture_12o50")
@@ -107,6 +108,7 @@ offset_left = 442.0
 offset_top = 160.0
 offset_right = 626.0
 offset_bottom = 237.0
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cylr4")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_x0iso")
 theme_override_styles/hover = SubResource("StyleBoxTexture_d2xdq")
@@ -162,11 +164,23 @@ theme_override_font_sizes/font_size = 14
 text = "0"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
 offset_left = 223.0
 offset_top = 249.0
 offset_right = 853.0
 offset_bottom = 578.0
 texture = ExtResource("8_32kmm")
+
+[node name="Button6" type="Button" parent="NinePatchRect"]
+offset_left = 532.0
+offset_top = 230.0
+offset_right = 583.0
+offset_bottom = 278.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4y7mh")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jk1g7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dct1l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_anetv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fkqnx")
 
 [node name="Button" type="Button" parent="NinePatchRect"]
 layout_mode = 0
@@ -181,6 +195,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_anetv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fkqnx")
 
 [node name="Button2" type="Button" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 217.0
 offset_top = 167.0
 offset_right = 268.0
@@ -192,6 +207,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_anetv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fkqnx")
 
 [node name="Button3" type="Button" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 217.0
 offset_top = 230.0
 offset_right = 268.0
@@ -203,6 +219,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_anetv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fkqnx")
 
 [node name="Button4" type="Button" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 531.0
 offset_top = 108.0
 offset_right = 582.0
@@ -215,21 +232,11 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_anetv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fkqnx")
 
 [node name="Button5" type="Button" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 531.0
 offset_top = 171.0
 offset_right = 582.0
 offset_bottom = 219.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4y7mh")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_jk1g7")
-theme_override_styles/hover = SubResource("StyleBoxTexture_dct1l")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_anetv")
-theme_override_styles/normal = SubResource("StyleBoxTexture_fkqnx")
-
-[node name="Button" type="Button" parent="."]
-offset_left = 755.0
-offset_top = 479.0
-offset_right = 806.0
-offset_bottom = 527.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4y7mh")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_jk1g7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dct1l")
