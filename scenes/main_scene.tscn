@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_ahl6h"]
 [ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
-[ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="8_elq6v"]
+[ext_resource type="PackedScene" path="res://scenes/components/mine.tscn" id="8_elq6v"]
 [ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_35ln3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymec3"]
