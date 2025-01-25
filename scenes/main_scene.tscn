@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_ahl6h"]
 [ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
-[ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="8_elq6v"]
+[ext_resource type="PackedScene" path="res://scenes/components/mine.tscn" id="8_elq6v"]
 [ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_35ln3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymec3"]
@@ -62,9 +62,6 @@ script = ExtResource("1_qmpyw")
 GarbagePackedScene = ExtResource("2_t1uja")
 BubblePackedScene = ExtResource("3_ahl6h")
 
-[node name="OxygenTimer" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1080.0
 offset_bottom = 3240.0
@@ -95,9 +92,9 @@ position = Vector2(92, 8)
 shape = SubResource("RectangleShape2D_tu1yg")
 
 [node name="ColorRect" type="ColorRect" parent="Boat"]
-visible = false
 offset_right = 184.0
 offset_bottom = 16.0
+color = Color(1, 1, 1, 0)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 3240)
@@ -156,5 +153,3 @@ position = Vector2(704, 3144)
 [node name="Mine4" parent="." instance=ExtResource("8_elq6v")]
 position = Vector2(952, 3192)
 Type = 1
-
-[connection signal="timeout" from="OxygenTimer" to="." method="OnOxygenTimerTimeout"]

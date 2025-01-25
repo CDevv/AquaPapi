@@ -172,6 +172,7 @@ offset_bottom = 578.0
 texture = ExtResource("8_32kmm")
 
 [node name="Button6" type="Button" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 532.0
 offset_top = 230.0
 offset_right = 583.0
