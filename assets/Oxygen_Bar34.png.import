@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck6d7vk5l2ndj"
-path="res://.godot/imported/UI_Big_Play_Button-sheet.png-0188101d21cf8df08813b64d6805bdb2.ctex"
+uid="uid://cd4igtpaf5odj"
+path="res://.godot/imported/Oxygen_Bar34.png-9b2a19ec49d716df26f1f64584fc916d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI_Big_Play_Button-sheet.png"
-dest_files=["res://.godot/imported/UI_Big_Play_Button-sheet.png-0188101d21cf8df08813b64d6805bdb2.ctex"]
+source_file="res://assets/Oxygen_Bar34.png"
+dest_files=["res://.godot/imported/Oxygen_Bar34.png-9b2a19ec49d716df26f1f64584fc916d.ctex"]
 
 [params]
 

@@ -12,6 +12,7 @@ namespace AquaPapi.Abstractions
     public partial class BaseScene : Node2D
     {
         protected Global Global { get; set; }
+        public Player Player { get; set; }
         public Camera2D Camera { get; protected set; }
         public Area2D WaterArea { get; private set; }
         public CollisionShape2D AreaShape { get; private set; }
@@ -24,6 +25,7 @@ namespace AquaPapi.Abstractions
         public override void _Ready()
         {
             Global = GetNode<Global>("/root/Global");
+            Player = GetNode<Player>("Player");
             Camera = GetNode<Camera2D>("Camera");
             WaterArea = GetNode<Area2D>("WaterArea");
             AreaShape = GetNode<CollisionShape2D>("%WaterShape");

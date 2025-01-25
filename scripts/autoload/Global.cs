@@ -36,11 +36,12 @@ namespace AquaPapi.Autoload
         public RandomNumberGenerator Random { get; private set; }
 
         public int Treats { get; set; }
+        public int Health { get; set; } = 10;
+        public int MaxHealth { get; set; } = 10;
         public int Oxygen { get; set; } = 5;
         public int MaxOxygen { get; private set; } = 5;
         public float MovementSpeed { get; set; } = 100.0f;
         public int Level { get; set; } = 1;
-
 
         public override void _Ready()
         {
