@@ -1,31 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://buqu04u666uph"]
+[gd_scene load_steps=10 format=3 uid="uid://buqu04u666uph"]
 
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="1_5aoco"]
 [ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_qmpyw"]
 [ext_resource type="PackedScene" uid="uid://daft73gb52td2" path="res://scenes/components/garbage.tscn" id="2_t1uja"]
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_ahl6h"]
+[ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu1yg"]
 size = Vector2(184, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh6u"]
-size = Vector2(3200, 16)
+size = Vector2(1080, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxqj7"]
+size = Vector2(24, 2872)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ly7j"]
-size = Vector2(3200, 1312)
+size = Vector2(1080, 2856)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qmpyw")
 GarbagePackedScene = ExtResource("2_t1uja")
 BubblePackedScene = ExtResource("3_ahl6h")
 
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_jx711")
+
 [node name="Camera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1080
+limit_bottom = 3240
 
 [node name="Player" parent="." instance=ExtResource("1_5aoco")]
-position = Vector2(1672, 272)
+position = Vector2(536, 328)
 
 [node name="Boat" type="StaticBody2D" parent="."]
-position = Vector2(1576, 312)
+position = Vector2(440, 368)
 
 [node name="Collision" type="CollisionShape2D" parent="Boat"]
 z_index = 2
@@ -37,23 +50,37 @@ offset_right = 184.0
 offset_bottom = 16.0
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(0, 1648)
+position = Vector2(0, 3240)
 
 [node name="Collision" type="CollisionShape2D" parent="Ground"]
 z_index = 2
-position = Vector2(1600, 8)
+position = Vector2(540, 8)
 shape = SubResource("RectangleShape2D_iyh6u")
 
+[node name="Collision2" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(-12, -1420)
+shape = SubResource("RectangleShape2D_kxqj7")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
+[node name="Collision3" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(1092, -1420)
+shape = SubResource("RectangleShape2D_kxqj7")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
 [node name="ColorRect" type="ColorRect" parent="Ground"]
-offset_right = 3200.0
+offset_right = 1080.0
 offset_bottom = 16.0
 
 [node name="WaterArea" type="Area2D" parent="."]
-position = Vector2(0, 336)
+position = Vector2(0, 384)
+collision_layer = 2
+collision_mask = 2
 
 [node name="WaterShape" type="CollisionShape2D" parent="WaterArea"]
 unique_name_in_owner = true
-position = Vector2(1600, 656)
+position = Vector2(540, 1428)
 shape = SubResource("RectangleShape2D_3ly7j")
 
 [node name="GarbageContainer" type="Node" parent="."]

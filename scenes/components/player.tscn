@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1lwsewhti21u"]
+[gd_scene load_steps=18 format=3 uid="uid://b1lwsewhti21u"]
 
 [ext_resource type="Script" path="res://scripts/components/Player.cs" id="1_jgpf0"]
 [ext_resource type="Texture2D" uid="uid://c8xohij6cs8wj" path="res://assets/Cat_Sumbarine.png" id="2_ehgfj"]
@@ -108,6 +108,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jgu4"]
 size = Vector2(69.4237, 69.4237)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w4bo"]
+size = Vector2(86.7796, 86.7796)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.460938, 0.460938)
 script = ExtResource("1_jgpf0")
@@ -121,3 +124,11 @@ animation = &"idle-1"
 position = Vector2(1.03449e-06, 1.03449e-06)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_0jgu4")
+
+[node name="CollectiblesDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="CollectiblesDetector"]
+position = Vector2(-1.03449e-06, 0)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_4w4bo")
+debug_color = Color(0, 0.6, 0.701961, 0.113725)

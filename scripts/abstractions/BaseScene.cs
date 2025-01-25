@@ -38,8 +38,11 @@ namespace AquaPapi.Abstractions
         {
             Vector2 rectStart = WaterArea.Position;
             Vector2 rectEnd = WaterArea.Position + AreaShape.Shape.GetRect().Size;
+            int level = Global.Level;
+            int[] types = Global.GarbageInfo[level].Keys.ToArray();
+            float[] values = Global.GarbageInfo[level].Values.Select(x => x[1]).ToArray();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 25; i++)
             {
                 float targetX = (float)GD.RandRange(rectStart.X, rectEnd.X);
                 float targetY = (float)GD.RandRange(rectStart.Y, rectEnd.Y);
@@ -47,8 +50,11 @@ namespace AquaPapi.Abstractions
 
                 Garbage garbage = GarbagePackedScene.Instantiate<Garbage>();
 
+                int chosenType = types[Global.Random.RandWeighted(values)];
+
                 GetNode<Node>("GarbageContainer").AddChild(garbage);
                 garbage.Position = targetPos;
+                garbage.SetType(chosenType);
             }
         }
 
@@ -57,7 +63,7 @@ namespace AquaPapi.Abstractions
             Vector2 rectStart = WaterArea.Position;
             Vector2 rectEnd = WaterArea.Position + AreaShape.Shape.GetRect().Size;
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 25; i++)
             {
                 float targetX = (float)GD.RandRange(rectStart.X, rectEnd.X);
                 float targetY = (float)GD.RandRange(rectStart.Y, rectEnd.Y);
