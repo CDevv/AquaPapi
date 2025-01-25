@@ -84,10 +84,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tndi7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hfh4q")
 
 [node name="ShopButton" type="Button" parent="."]
-offset_left = 444.0
-offset_top = 163.0
-offset_right = 623.0
-offset_bottom = 233.0
+offset_left = 442.0
+offset_top = 160.0
+offset_right = 626.0
+offset_bottom = 237.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cylr4")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_x0iso")
 theme_override_styles/hover = SubResource("StyleBoxTexture_d2xdq")
