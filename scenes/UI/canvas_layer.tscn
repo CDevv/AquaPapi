@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://5yp6upiavrhw"]
 
-[ext_resource type="Script" path="res://scripts/UI/Button.cs" id="1_d1ekg"]
+[ext_resource type="Script" path="res://scripts/UI/UserInterface.cs" id="1_i7mb2"]
 [ext_resource type="Texture2D" uid="uid://ck6d7vk5l2ndj" path="res://assets/UI_Big_Play_Button-sheet.png" id="1_nvj8y"]
 [ext_resource type="Texture2D" uid="uid://cd4igtpaf5odj" path="res://assets/Oxygen_Bar34.png" id="3_cqa6h"]
 [ext_resource type="Texture2D" uid="uid://ddtytvcjsploo" path="res://assets/Oxygen_Bar6.png" id="4_8byr8"]
@@ -64,10 +64,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_d1ekg")
+[node name="UserInterface" type="CanvasLayer"]
+script = ExtResource("1_i7mb2")
 
-[node name="Button" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.086
 anchor_top = 0.029
@@ -83,7 +83,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_12o50")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tndi7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hfh4q")
 
-[node name="Button2" type="Button" parent="."]
+[node name="ShopButton" type="Button" parent="."]
 offset_left = 444.0
 offset_top = 163.0
 offset_right = 623.0
@@ -94,7 +94,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_d2xdq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1hx2j")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ok0su")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="OxygenBack" type="TextureRect" parent="."]
 offset_left = 31.0
 offset_top = 18.0
 offset_right = 540.0
@@ -102,7 +102,7 @@ offset_bottom = 156.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_cqa6h")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="OxygenBar" type="TextureProgressBar" parent="."]
 offset_left = 101.0
 offset_top = 18.0
 offset_right = 610.0
@@ -112,17 +112,34 @@ value = 50.0
 texture_under = ExtResource("4_8byr8")
 texture_progress = ExtResource("4_h1073")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="TreatsContainer" type="NinePatchRect" parent="."]
 offset_left = 876.0
 offset_top = 16.0
-offset_right = 1036.0
-offset_bottom = 78.0
+offset_right = 970.0
+offset_bottom = 44.0
+scale = Vector2(2, 2)
 texture = ExtResource("6_fmr5k")
 region_rect = Rect2(148, 149.75, 56.5, 23.8565)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 6
+patch_margin_bottom = 8
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect"]
-position = Vector2(34, 27)
+[node name="TreatsIcon" type="AnimatedSprite2D" parent="TreatsContainer"]
+unique_name_in_owner = true
+position = Vector2(18, 12)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ywggc")
 frame_progress = 0.923315
 
-[connection signal="pressed" from="Button" to="." method="OnButtonPressed"]
+[node name="TreatsLabel" type="Label" parent="TreatsContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 4.0
+offset_right = 70.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 14
+text = "0"
+
+[connection signal="pressed" from="PlayButton" to="." method="OnButtonPressed"]

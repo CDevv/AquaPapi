@@ -16,6 +16,7 @@ namespace AquaPapi.Abstractions
         public Camera2D Camera { get; protected set; }
         public Area2D WaterArea { get; private set; }
         public CollisionShape2D AreaShape { get; private set; }
+        public UserInterface UserInterface { get; private set; }
 
         [Export]
         public PackedScene GarbagePackedScene { get; private set; }
@@ -29,6 +30,7 @@ namespace AquaPapi.Abstractions
             Camera = GetNode<Camera2D>("Camera");
             WaterArea = GetNode<Area2D>("WaterArea");
             AreaShape = GetNode<CollisionShape2D>("%WaterShape");
+            UserInterface = GetNode<UserInterface>("CanvasLayer");
 
             Global.CurrentScene = this;
 
@@ -92,6 +94,8 @@ namespace AquaPapi.Abstractions
         {
             Global.Treats += (int)value;
             GD.Print("Treats:", Global.Treats);
+
+            UserInterface.UpdateInterface();
         }
 
         private void OnBubbleCollision(float value)
@@ -99,6 +103,8 @@ namespace AquaPapi.Abstractions
             int oxygenChange = (int)Mathf.Clamp(value, 0, Global.MaxOxygen - Global.Oxygen);
             Global.Oxygen += oxygenChange;
             GD.Print("Oxygen: ", Global.Oxygen);
+
+            UserInterface.UpdateInterface();
         }
     }
 }
