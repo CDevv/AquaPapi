@@ -1,20 +1,23 @@
+using AquaPapi.Abstractions;
 using AquaPapi.Autoload;
 using Godot;
 using System;
 
 namespace AquaPapi.Scenes
 {
-    public partial class MainScene : Node2D
+    public partial class MainScene : BaseScene
     {
-        private Global global;
         private StaticBody2D boatStaticBody;
+        private Camera2D camera;
+
+        public Camera2D Camera => camera;
 
         public override void _Ready()
         {
-            global = GetNode<Global>("/root/Global");
+            base._Ready();
             boatStaticBody = GetNode<StaticBody2D>("Boat");
 
-            global.PlayerGotDropped += OnPlayerDropped;
+            Global.PlayerGotDropped += OnPlayerDropped;
         }
 
         private void OnPlayerDropped()

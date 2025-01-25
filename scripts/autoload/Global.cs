@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using AquaPapi.Abstractions;
+using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace AquaPapi.Autoload
     {
         [Signal]
         public delegate void PlayerGotDroppedEventHandler();
+
+        public BaseScene CurrentScene { get; set; }
 
         private bool isInWater;
 
@@ -31,5 +34,6 @@ namespace AquaPapi.Autoload
 
         public int Oxygen { get; set; } = 5;
         public int MaxOxygen { get; set; } = 5;
+
     }
 }

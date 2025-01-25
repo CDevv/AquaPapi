@@ -57,6 +57,8 @@ namespace AquaPapi.Components
 
             Velocity = velocity;
             MoveAndSlide();
+
+            global.CurrentScene.Camera.Position = Position;
         }
     }
 }
