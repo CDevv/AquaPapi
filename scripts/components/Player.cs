@@ -44,11 +44,32 @@ namespace AquaPapi.Components
             }
 
             // Get the input direction and handle the movement/deceleration.
-            // As good practice, you should replace UI actions with custom gameplay actions.
-            Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-            if (direction != Vector2.Zero)
+            // Check for movement input (a, d, left, right)
+            float inputX = 0;
+
+            if (Input.IsActionPressed("ui_left") || Input.IsActionPressed("move_left"))
             {
-                velocity.X = direction.X * Speed;
+                inputX -= 1;  // Move left
+            }
+            if (Input.IsActionPressed("ui_right") || Input.IsActionPressed("move_right"))
+            {
+                inputX += 1;  // Move right
+            }
+
+            // If 'a' and 'd' keys are also desired
+            if (Input.IsKeyPressed(Key.A))  // Correct key check for 'A'
+            {
+                inputX -= 1;  // Move left with 'A'
+            }
+            if (Input.IsKeyPressed(Key.D))  // Correct key check for 'D'
+            {
+                inputX += 1;  // Move right with 'D'
+            }
+
+            // Apply movement to the X-axis
+            if (inputX != 0)
+            {
+                velocity.X = inputX * Speed;
             }
             else
             {
