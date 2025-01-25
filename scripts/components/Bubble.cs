@@ -11,6 +11,7 @@ namespace AquaPapi.Components
 
         private Global global;
         private AnimatedSprite2D sprite;
+        private AudioStreamPlayer streamPlayer;
 
         public int Type { get; private set; }
         public float Value { get; set; }
@@ -19,6 +20,7 @@ namespace AquaPapi.Components
         {
             global = GetNode<Global>("/root/Global");
             sprite = GetNode<AnimatedSprite2D>("Sprite");
+            streamPlayer = GetNode<AudioStreamPlayer>("Sound");
         }
 
         public void SetType(int type)
@@ -37,6 +39,7 @@ namespace AquaPapi.Components
         {
             EmitSignal(SignalName.Collided, Value);
             QueueFree();
+            streamPlayer.Play();
         }
     }
 }

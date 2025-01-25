@@ -10,12 +10,14 @@ namespace AquaPapi.Scenes
     {
         private StaticBody2D boatStaticBody;
         private AnimatedSprite2D boatSprite;
+        private AudioStreamPlayer streamPlayer;
 
         public override void _Ready()
         {
             base._Ready();
             boatStaticBody = GetNode<StaticBody2D>("Boat");
             boatSprite = GetNode<AnimatedSprite2D>("BoatPlatform");
+            streamPlayer = GetNode<AudioStreamPlayer>("GameMusic");
 
             Global.PlayerGotDropped += OnPlayerDropped;
 
@@ -26,6 +28,8 @@ namespace AquaPapi.Scenes
         {
             boatStaticBody.GetNode<CollisionShape2D>("Collision").Disabled = true;
             boatStaticBody.GetNode<ColorRect>("ColorRect").Hide();
+
+            streamPlayer.Play();
         }
     }
 }
