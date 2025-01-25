@@ -6,8 +6,30 @@
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_ahl6h"]
 [ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
-[ext_resource type="PackedScene" path="res://scenes/components/mine.tscn" id="8_elq6v"]
+[ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="8_elq6v"]
 [ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_35ln3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymec3"]
+atlas = ExtResource("9_35ln3")
+region = Rect2(0, 0, 256, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn5l4"]
+atlas = ExtResource("9_35ln3")
+region = Rect2(0, 122, 256, 122)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krg77"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_ymec3")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_wn5l4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu1yg"]
 size = Vector2(184, 16)
@@ -35,38 +57,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymec3"]
-atlas = ExtResource("9_35ln3")
-region = Rect2(0, 0, 256, 122)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wn5l4"]
-atlas = ExtResource("9_35ln3")
-region = Rect2(0, 122, 256, 122)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_krg77"]
-animations = [{
-"frames": [{
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_ymec3")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_wn5l4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qmpyw")
 GarbagePackedScene = ExtResource("2_t1uja")
 BubblePackedScene = ExtResource("3_ahl6h")
 
 [node name="Background" type="TextureRect" parent="."]
-offset_left = 40.0
-offset_top = -73.0
-offset_right = 1120.0
-offset_bottom = 3167.0
+offset_right = 1080.0
+offset_bottom = 3240.0
 texture = ExtResource("4_jx711")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -78,6 +76,12 @@ limit_bottom = 3240
 [node name="Player" parent="." instance=ExtResource("1_5aoco")]
 position = Vector2(561, 331)
 scale = Vector2(0.5, 0.5)
+
+[node name="BoatPlatform" type="AnimatedSprite2D" parent="."]
+position = Vector2(542, 326)
+scale = Vector2(1.16211, 1.10938)
+sprite_frames = SubResource("SpriteFrames_krg77")
+frame_progress = 0.00343741
 
 [node name="Boat" type="StaticBody2D" parent="."]
 position = Vector2(440, 368)
@@ -148,9 +152,3 @@ position = Vector2(704, 3144)
 [node name="Mine4" parent="." instance=ExtResource("8_elq6v")]
 position = Vector2(952, 3192)
 Type = 1
-
-[node name="boatPlatform" type="AnimatedSprite2D" parent="."]
-position = Vector2(542, 326)
-scale = Vector2(1.16211, 1.10938)
-sprite_frames = SubResource("SpriteFrames_krg77")
-frame_progress = 0.00343741
