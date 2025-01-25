@@ -2,9 +2,9 @@ using AquaPapi.Autoload;
 using Godot;
 using System;
 
-public partial class Button : Godot.Button
+public partial class Button : CanvasLayer
 {
-    private Global global;  // Variable for the global object
+    private Global global;  // Reference to the global object
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -13,9 +13,10 @@ public partial class Button : Godot.Button
         global = GetNode<Global>("/root/Global");
 
         // Connect the button's pressed signal to a method
-        this.Pressed += OnButtonPressed;
+       // this.Connect("pressed", new Callable(this, "OnButtonPressed"));
     }
 
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
         // Check if the "W" key or any other key action is pressed
@@ -26,6 +27,9 @@ public partial class Button : Godot.Button
             {
                 global.IsInWater = true;
             }
+
+            // Start the game logic here (you can add any custom game-start logic you need)
+            StartGame();
         }
 
         // Hide the button when IsInWater becomes true
@@ -52,7 +56,7 @@ public partial class Button : Godot.Button
         // Example: Change the scene to the actual game scene
         // GetTree().ChangeScene("res://Scenes/GameScene.tscn");
 
-        // Set the global variable to true
+        // Set the global variable to true to indicate the game has started
         global.IsInWater = true;
     }
 }
