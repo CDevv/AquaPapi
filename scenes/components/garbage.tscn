@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnjvqot3xrdy4"]
+
+[ext_resource type="Script" path="res://scripts/components/Garbage.cs" id="1_moeb0"]
+[ext_resource type="Texture2D" uid="uid://bmuwyr0y25vec" path="res://assets/trash.png" id="2_owqyr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ynk1"]
+atlas = ExtResource("2_owqyr")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2jeu"]
+atlas = ExtResource("2_owqyr")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ig5m"]
+atlas = ExtResource("2_owqyr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tochi"]
+atlas = ExtResource("2_owqyr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25j6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ynk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2jeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ig5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tochi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cia3x"]
+size = Vector2(64, 64)
+
+[node name="Garbage" type="StaticBody2D"]
+modulate = Color(1, 0.45098, 0.447059, 1)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_moeb0")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.43051e-06, -1.43051e-06)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_25j6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cia3x")
+debug_color = Color(0.612436, 0, 0.274426, 0.42)

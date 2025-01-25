@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://buqu04u666uph"]
+[gd_scene load_steps=8 format=3 uid="uid://buqu04u666uph"]
 
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="1_5aoco"]
 [ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_qmpyw"]
+[ext_resource type="PackedScene" uid="uid://cnjvqot3xrdy4" path="res://scenes/components/garbage.tscn" id="2_t1uja"]
+[ext_resource type="PackedScene" uid="uid://bn5siun6s5v0t" path="res://scenes/components/bubble.tscn" id="3_ahl6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu1yg"]
 size = Vector2(184, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh6u"]
-size = Vector2(984, 20)
+size = Vector2(3256, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om7d7"]
+size = Vector2(3264, 1312)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qmpyw")
+GarbagePackedScene = ExtResource("2_t1uja")
+BubblePackedScene = ExtResource("3_ahl6h")
 
 [node name="Camera" type="Camera2D" parent="."]
 
@@ -34,9 +41,22 @@ position = Vector2(8, 1648)
 
 [node name="Collision" type="CollisionShape2D" parent="Ground"]
 z_index = 2
-position = Vector2(492, 8)
+position = Vector2(1628, 8)
 shape = SubResource("RectangleShape2D_iyh6u")
 
 [node name="ColorRect" type="ColorRect" parent="Ground"]
-offset_right = 984.0
+offset_right = 3256.0
 offset_bottom = 16.0
+
+[node name="WaterArea" type="Area2D" parent="."]
+position = Vector2(0, 328)
+
+[node name="WaterShape" type="CollisionShape2D" parent="WaterArea"]
+unique_name_in_owner = true
+position = Vector2(1632, 656)
+shape = SubResource("RectangleShape2D_om7d7")
+debug_color = Color(0.164419, 3.02261e-05, 0.623294, 0.419608)
+
+[node name="GarbageContainer" type="Node" parent="."]
+
+[node name="BubblesContainer" type="Node" parent="."]

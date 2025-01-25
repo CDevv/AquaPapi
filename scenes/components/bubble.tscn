@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn5siun6s5v0t"]
+
+[ext_resource type="Texture2D" uid="uid://bf26nvk1dfrky" path="res://assets/bubbles.png" id="1_i31nd"]
+[ext_resource type="Script" path="res://scripts/components/Bubble.cs" id="1_inrg3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e34ti"]
+atlas = ExtResource("1_i31nd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ljpj"]
+atlas = ExtResource("1_i31nd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr1br"]
+atlas = ExtResource("1_i31nd")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1150"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e34ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ljpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr1br")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ipud"]
+radius = 16.0
+
+[node name="Bubble" type="StaticBody2D"]
+script = ExtResource("1_inrg3")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t1150")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0ipud")
