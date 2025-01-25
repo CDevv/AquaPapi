@@ -9,10 +9,10 @@
 size = Vector2(184, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh6u"]
-size = Vector2(984, 20)
+size = Vector2(3200, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ly7j"]
-size = Vector2(3194, 1314)
+size = Vector2(3200, 1312)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qmpyw")
@@ -22,10 +22,10 @@ BubblePackedScene = ExtResource("3_ahl6h")
 [node name="Camera" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_5aoco")]
-position = Vector2(640, 272)
+position = Vector2(1672, 272)
 
 [node name="Boat" type="StaticBody2D" parent="."]
-position = Vector2(544, 312)
+position = Vector2(1576, 312)
 
 [node name="Collision" type="CollisionShape2D" parent="Boat"]
 z_index = 2
@@ -37,15 +37,15 @@ offset_right = 184.0
 offset_bottom = 16.0
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(8, 1648)
+position = Vector2(0, 1648)
 
 [node name="Collision" type="CollisionShape2D" parent="Ground"]
 z_index = 2
-position = Vector2(492, 8)
+position = Vector2(1600, 8)
 shape = SubResource("RectangleShape2D_iyh6u")
 
 [node name="ColorRect" type="ColorRect" parent="Ground"]
-offset_right = 984.0
+offset_right = 3200.0
 offset_bottom = 16.0
 
 [node name="WaterArea" type="Area2D" parent="."]
