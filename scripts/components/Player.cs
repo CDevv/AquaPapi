@@ -44,16 +44,6 @@ namespace AquaPapi.Components
 
         public override void _Input(InputEvent @event)
         {
-            // Check if the "dropPapi" action is pressed to trigger water entry
-            if (Input.IsActionJustPressed("dropPapi"))
-            {
-                if (!global.IsInWater)
-                {
-                    global.IsInWater = true;
-                    sprite.Play("falling-1");
-                }
-            }
-
             // Check if the player presses the "Arrow Up", "W", or "Space" key to move upward
             if ((Input.IsActionJustPressed("ui_up") || Input.IsKeyPressed(Key.W) || Input.IsKeyPressed(Key.Space)) && global.IsInWater && canJump)
             {
@@ -94,7 +84,8 @@ namespace AquaPapi.Components
             // If in water, apply a stronger gravity effect to avoid gliding
             if (global.IsInWater)
             {
-                velocity.Y += GetGravity().Y * 0.1f * (float)delta;  // Increased gravity in water to avoid gliding
+                GD.Print(GetGravity().Y);
+                velocity.Y += (GetGravity().Y / 3) * 0.1f * (float)delta;  // Increased gravity in water to avoid gliding
             }
             else
             {
@@ -147,6 +138,11 @@ namespace AquaPapi.Components
             sprite.Play("hurt-1");
             await ToSignal(sprite, AnimatedSprite2D.SignalName.AnimationFinished);
             sprite.Play("falling-1");
+        }
+
+        public void PlayAnimation(string name)
+        {
+            sprite.Play(name);
         }
     }
 }
