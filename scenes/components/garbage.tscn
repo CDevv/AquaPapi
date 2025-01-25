@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnjvqot3xrdy4"]
+[gd_scene load_steps=9 format=3 uid="uid://daft73gb52td2"]
 
 [ext_resource type="Script" path="res://scripts/components/Garbage.cs" id="1_moeb0"]
 [ext_resource type="Texture2D" uid="uid://bmuwyr0y25vec" path="res://assets/trash.png" id="2_owqyr"]
