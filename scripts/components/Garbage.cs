@@ -7,7 +7,7 @@ namespace AquaPapi.Components
     public partial class Garbage : Node2D
     {
         [Signal]
-        public delegate void CollidedEventHandler();
+        public delegate void CollidedEventHandler(float value);
 
         private Global global;
         private AnimatedSprite2D sprite;
@@ -27,8 +27,7 @@ namespace AquaPapi.Components
 
         private void OnBodyEntered(Node2D body)
         {
-            GD.Print("body entered");
-            EmitSignal(SignalName.Collided);
+            EmitSignal(SignalName.Collided, Value);
             QueueFree();
         }
     }

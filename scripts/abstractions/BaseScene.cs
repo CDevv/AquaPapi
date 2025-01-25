@@ -55,6 +55,8 @@ namespace AquaPapi.Abstractions
                 GetNode<Node>("GarbageContainer").AddChild(garbage);
                 garbage.Position = targetPos;
                 garbage.SetType(chosenType);
+
+                garbage.Collided += OnGarbageCollision;
             }
         }
 
@@ -62,6 +64,9 @@ namespace AquaPapi.Abstractions
         {
             Vector2 rectStart = WaterArea.Position;
             Vector2 rectEnd = WaterArea.Position + AreaShape.Shape.GetRect().Size;
+            int level = Global.Level;
+            int[] types = Global.BubblesInfo[level].Keys.ToArray();
+            float[] values = Global.BubblesInfo[level].Values.Select(x => x[1]).ToArray();
 
             for (int i = 0; i < 25; i++)
             {
@@ -71,9 +76,24 @@ namespace AquaPapi.Abstractions
 
                 Bubble bubble = BubblePackedScene.Instantiate<Bubble>();
 
+                int chosenType = types[Global.Random.RandWeighted(values)];
+
                 GetNode<Node>("BubblesContainer").AddChild(bubble);
                 bubble.Position = targetPos;
+                bubble.SetType(chosenType);
+
+                bubble.Collided += OnBubbleCollision;
             }
+        }
+
+        private void OnGarbageCollision(float value)
+        {
+            GD.Print("Garbage collected: ", value);
+        }
+
+        private void OnBubbleCollision(float value)
+        {
+            GD.Print("Bubble collected");
         }
     }
 }

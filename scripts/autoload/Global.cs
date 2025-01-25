@@ -32,6 +32,7 @@ namespace AquaPapi.Autoload
         }
 
         public Godot.Collections.Dictionary<int, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> GarbageInfo { get; private set; }
+        public Godot.Collections.Dictionary<int, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> BubblesInfo { get; set; }
         public RandomNumberGenerator Random { get; private set; }
 
         public int Treats { get; set; }
@@ -44,11 +45,13 @@ namespace AquaPapi.Autoload
         public override void _Ready()
         {
             GarbageInfo = new();
+            BubblesInfo = new();
             Random = new RandomNumberGenerator();
             GetGarbageInfo();
+            GetBubblesInfo();
         }
 
-        public void GetGarbageInfo()
+        private void GetGarbageInfo()
         {
             FileAccess garbagesFile = FileAccess.Open("res://info/garbage.json", FileAccess.ModeFlags.Read);
             string garbagesJson = garbagesFile.GetAsText();
@@ -74,6 +77,35 @@ namespace AquaPapi.Autoload
 
                 int key = int.Parse(item.Key);
                 GarbageInfo[key] = typeValues;
+            }
+        }
+
+        private void GetBubblesInfo()
+        {
+            FileAccess bubblesFile = FileAccess.Open("res://info/bubbles.json", FileAccess.ModeFlags.Read);
+            string bubblesJson = bubblesFile.GetAsText();
+            bubblesFile.Close();
+
+            Godot.Collections.Dictionary<string, Variant> garbagesDict =
+                (Godot.Collections.Dictionary<string, Variant>)Json.ParseString(bubblesJson);
+
+            foreach (var item in garbagesDict)
+            {
+                Godot.Collections.Dictionary<int, Godot.Collections.Array<float>> typeValues = new();
+                Godot.Collections.Dictionary<Variant, Variant> itemData =
+                    (Godot.Collections.Dictionary<Variant, Variant>)item.Value;
+
+                foreach (var garbageType in itemData)
+                {
+                    int typeKey = int.Parse((string)garbageType.Key);
+                    Godot.Collections.Array<float> typeValue =
+                        (Godot.Collections.Array<float>)garbageType.Value;
+
+                    typeValues[typeKey] = typeValue;
+                }
+
+                int key = int.Parse(item.Key);
+                BubblesInfo[key] = typeValues;
             }
         }
     }
