@@ -7,13 +7,29 @@ namespace AquaPapi.Components
     public partial class Player : CharacterBody2D
     {
         public float Speed;
-
+        private float upwardForce = -150f; // Upward force to move the player upwards
         private Global global;
+
+        // Timer to manage jump reset after a period
+        private Timer jumpResetTimer;
+
+        // Variable to track if the player can jump
+        private bool canJump = true;
 
         public override void _Ready()
         {
             global = GetNode<Global>("/root/Global");
             Speed = global.MovementSpeed;
+
+            // Create and set up the jump reset timer
+            jumpResetTimer = new Timer();
+            AddChild(jumpResetTimer);
+            jumpResetTimer.WaitTime = 5.0f; // Reset after 10 seconds
+            jumpResetTimer.OneShot = true; // Timer will only trigger once per start
+            jumpResetTimer.Autostart = false; // Do not start automatically
+
+            // Connect the timer's timeout signal to the OnJumpResetTimeout method
+            jumpResetTimer.Connect("timeout", new Callable(this, nameof(OnJumpResetTimeout)));
         }
 
         public override void _Input(InputEvent @event)
@@ -26,6 +42,25 @@ namespace AquaPapi.Components
                     global.IsInWater = true;
                 }
             }
+
+            // Check if the player presses the "Arrow Up", "W", or "Space" key to move upward
+            if ((Input.IsActionJustPressed("ui_up") || Input.IsKeyPressed(Key.W) || Input.IsKeyPressed(Key.Space)) && global.IsInWater && canJump)
+            {
+                // Apply an upward velocity when the key is pressed
+                Velocity = new Vector2(Velocity.X, upwardForce);  // Apply upward movement
+
+                // Disable jumping temporarily
+                canJump = false;
+
+                // Start the timer to reset jump ability
+                jumpResetTimer.Start();
+            }
+        }
+
+        // Method to reset the jump ability after the timer expires
+        private void OnJumpResetTimeout()
+        {
+            canJump = true;  // Allow jumping again after timeout
         }
 
         public override void _PhysicsProcess(double delta)
@@ -36,7 +71,7 @@ namespace AquaPapi.Components
             if (global.IsInWater)
             {
                 // Apply reduced gravity (only modify the Y component)
-                velocity.Y += GetGravity().Y * 0.1f * (float)delta;  // Reducing gravity on Y-axis
+                velocity.Y += GetGravity().Y * 0.1f * (float)delta;  // Slow down falling due to water
             }
             else
             {
