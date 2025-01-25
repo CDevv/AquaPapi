@@ -35,5 +35,7 @@ namespace AquaPapi.Autoload
         public int Oxygen { get; set; } = 5;
         public int MaxOxygen { get; set; } = 5;
 
+        public float MovementSpeed { get; set; } = 300.0f;
+
     }
 }

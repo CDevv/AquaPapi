@@ -6,14 +6,15 @@ namespace AquaPapi.Components
 {
     public partial class Player : CharacterBody2D
     {
-        public const float Speed = 300.0f;
-        public const float JumpVelocity = -400.0f;
+        public float Speed;
+        //public const float JumpVelocity = -400.0f;
 
         private Global global;
 
         public override void _Ready()
         {
             global = GetNode<Global>("/root/Global");
+            Speed = global.MovementSpeed;
         }
 
         public override void _Input(InputEvent @event)
@@ -37,11 +38,11 @@ namespace AquaPapi.Components
                 velocity += GetGravity() * (float)delta;
             }
 
-            // Handle Jump.
-            if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-            {
-                velocity.Y = JumpVelocity;
-            }
+            //// Handle Jump.
+            //if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+            //{
+            //    velocity.Y = JumpVelocity;
+            //}
 
             // Get the input direction and handle the movement/deceleration.
             // Check for movement input (a, d, left, right)
