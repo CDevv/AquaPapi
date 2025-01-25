@@ -86,3 +86,16 @@ shape = SubResource("RectangleShape2D_3ly7j")
 [node name="GarbageContainer" type="Node" parent="."]
 
 [node name="BubblesContainer" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1582.0
+offset_top = 56.0
+offset_right = 1768.0
+offset_bottom = 134.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1osqv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kaa0p")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_q20q1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0hogn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_8ku38")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h7uai")
+script = ExtResource("6_7h563")
