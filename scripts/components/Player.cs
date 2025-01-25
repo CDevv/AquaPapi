@@ -18,9 +18,12 @@ namespace AquaPapi.Components
         private bool canJump = true;
         private bool hasJumped = false; // Check if the player has already jumped
 
+        private AnimatedSprite2D sprite;
+
         public override void _Ready()
         {
             global = GetNode<Global>("/root/Global");
+            sprite = GetNode<AnimatedSprite2D>("Sprite");
             Speed = global.MovementSpeed;
 
             // Create and set up the jump reset timer
@@ -32,6 +35,11 @@ namespace AquaPapi.Components
 
             // Connect the timer's timeout signal to the OnJumpResetTimeout method
             jumpResetTimer.Connect("timeout", new Callable(this, nameof(OnJumpResetTimeout)));
+
+            sprite.Play("idle-1");
+
+            GD.Print(global.CurrentScene == null);
+            
         }
 
         public override void _Input(InputEvent @event)
@@ -42,6 +50,7 @@ namespace AquaPapi.Components
                 if (!global.IsInWater)
                 {
                     global.IsInWater = true;
+                    sprite.Play("falling-1");
                 }
             }
 
@@ -128,6 +137,16 @@ namespace AquaPapi.Components
 
             // Keep the camera's position synced with the player's position
             global.CurrentScene.Camera.Position = Position;
+        }
+
+        public async void OnMineCollided()
+        {
+            global.Health -= 1;
+            GD.Print("Health: ", global.Health);
+
+            sprite.Play("hurt-1");
+            await ToSignal(sprite, AnimatedSprite2D.SignalName.AnimationFinished);
+            sprite.Play("falling-1");
         }
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://buqu04u666uph"]
+[gd_scene load_steps=15 format=3 uid="uid://buqu04u666uph"]
 
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="1_5aoco"]
 [ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_qmpyw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
 [ext_resource type="Texture2D" uid="uid://ddjqg2e7ghug0" path="res://assets/boat.png" id="6_tt3bc"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
+[ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="8_elq6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu1yg"]
 size = Vector2(184, 16)
@@ -104,12 +105,6 @@ shape = SubResource("RectangleShape2D_3ly7j")
 
 [node name="BubblesContainer" type="Node" parent="."]
 
-[node name="Button" type="Button" parent="."]
-offset_left = 1200.0
-offset_top = 112.0
-offset_right = 1386.0
-offset_bottom = 190.0
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(568, 328)
@@ -117,3 +112,16 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_3oi2p")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("7_468w5")]
+
+[node name="Mine" parent="." instance=ExtResource("8_elq6v")]
+position = Vector2(144, 3144)
+
+[node name="Mine2" parent="." instance=ExtResource("8_elq6v")]
+position = Vector2(416, 3144)
+
+[node name="Mine3" parent="." instance=ExtResource("8_elq6v")]
+position = Vector2(704, 3144)
+
+[node name="Mine4" parent="." instance=ExtResource("8_elq6v")]
+position = Vector2(952, 3192)
+Type = 1

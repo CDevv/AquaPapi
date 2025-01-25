@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn6yv838487nq"]
+
+[ext_resource type="Script" path="res://scripts/components/Mine.cs" id="1_7nkxw"]
+[ext_resource type="Texture2D" uid="uid://be2sykcrpn5ef" path="res://assets/bombs.png" id="1_73g3t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilcn0"]
+atlas = ExtResource("1_73g3t")
+region = Rect2(0, 0, 176, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwycn"]
+atlas = ExtResource("1_73g3t")
+region = Rect2(176, 0, 176, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bpnsa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilcn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwycn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acdnf"]
+radius = 48.0
+
+[node name="Mine" type="Node2D"]
+script = ExtResource("1_7nkxw")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bpnsa")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-8, -72)
+shape = SubResource("CircleShape2D_acdnf")
+debug_color = Color(0.40763, 0.255857, 0.207344, 0.42)
+
+[node name="StaticBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="StaticBody"]
+position = Vector2(-8, -72)
+shape = SubResource("CircleShape2D_acdnf")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="OnBodyEntered"]
