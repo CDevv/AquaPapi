@@ -3,6 +3,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,7 +36,8 @@ namespace AquaPapi.Autoload
         public int Oxygen { get; set; } = 5;
         public int MaxOxygen { get; set; } = 5;
 
-        public float MovementSpeed { get; set; } = 300.0f;
+        public float MovementSpeed { get; set; } = 100.0f;
 
+        public int Level { get; set; } = 1;
     }
 }
