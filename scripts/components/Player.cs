@@ -7,7 +7,8 @@ namespace AquaPapi.Components
     public partial class Player : CharacterBody2D
     {
         public float Speed;
-        private float upwardForce = -150f; // Upward force to move the player upwards
+        private float upwardForce = -80f; // Reduced force for the initial jump
+        private float jumpMultiplier = 1.0f; // Jump multiplier
         private Global global;
 
         // Timer to manage jump reset after a period
@@ -15,6 +16,7 @@ namespace AquaPapi.Components
 
         // Variable to track if the player can jump
         private bool canJump = true;
+        private bool hasJumped = false; // Check if the player has already jumped
 
         public override void _Ready()
         {
@@ -24,8 +26,8 @@ namespace AquaPapi.Components
             // Create and set up the jump reset timer
             jumpResetTimer = new Timer();
             AddChild(jumpResetTimer);
-            jumpResetTimer.WaitTime = 5.0f; // Reset after 10 seconds
-            jumpResetTimer.OneShot = true; // Timer will only trigger once per start
+            jumpResetTimer.WaitTime = 5.0f; // Reset after 5 seconds
+            jumpResetTimer.OneShot = true; // Timer triggers only once
             jumpResetTimer.Autostart = false; // Do not start automatically
 
             // Connect the timer's timeout signal to the OnJumpResetTimeout method
@@ -34,7 +36,7 @@ namespace AquaPapi.Components
 
         public override void _Input(InputEvent @event)
         {
-            // Check if the "dropPapi" action is pressed to trigger the water entry.
+            // Check if the "dropPapi" action is pressed to trigger water entry
             if (Input.IsActionJustPressed("dropPapi"))
             {
                 if (!global.IsInWater)
@@ -46,14 +48,27 @@ namespace AquaPapi.Components
             // Check if the player presses the "Arrow Up", "W", or "Space" key to move upward
             if ((Input.IsActionJustPressed("ui_up") || Input.IsKeyPressed(Key.W) || Input.IsKeyPressed(Key.Space)) && global.IsInWater && canJump)
             {
-                // Apply an upward velocity when the key is pressed
-                Velocity = new Vector2(Velocity.X, upwardForce);  // Apply upward movement
+                if (!hasJumped) // If this is the first jump
+                {
+                    upwardForce = -60f; // Reduced force for the first jump
+                    jumpMultiplier = 1.0f; // No multiplier for the first jump
+                }
+                else // After the initial jump
+                {
+                    upwardForce = -80f; // Increased force for subsequent jumps
+                    jumpMultiplier = 1.5f; // Increase jump strength
+                }
 
-                // Disable jumping temporarily
+                // Apply upward velocity
+                Velocity = new Vector2(Velocity.X, upwardForce * jumpMultiplier);
+
+                // Temporarily disable jumping
                 canJump = false;
 
                 // Start the timer to reset jump ability
                 jumpResetTimer.Start();
+
+                hasJumped = true; // Mark that the player has jumped
             }
         }
 
@@ -67,33 +82,28 @@ namespace AquaPapi.Components
         {
             Vector2 velocity = Velocity;
 
-            // If in water, reduce gravity to make falling slower
+            // If in water, apply a stronger gravity effect to avoid gliding
             if (global.IsInWater)
             {
-                // Apply reduced gravity (only modify the Y component)
-                velocity.Y += GetGravity().Y * 0.1f * (float)delta;  // Slow down falling due to water
+                velocity.Y += GetGravity().Y * 0.1f * (float)delta;  // Increased gravity in water to avoid gliding
             }
             else
             {
-                // If not in water, apply normal gravity
                 velocity += GetGravity() * (float)delta;
             }
 
             // Handle movement input on the X-axis
             float inputX = 0;
 
-            // Check for left movement input (using action or key)
             if (Input.IsActionPressed("ui_left") || Input.IsActionPressed("move_left"))
             {
                 inputX -= 1;  // Move left
             }
-            // Check for right movement input (using action or key)
             if (Input.IsActionPressed("ui_right") || Input.IsActionPressed("move_right"))
             {
                 inputX += 1;  // Move right
             }
 
-            // If 'A' or 'D' keys are pressed, move left or right accordingly
             if (Input.IsKeyPressed(Key.A))
             {
                 inputX -= 1;  // Move left with 'A'
@@ -103,7 +113,6 @@ namespace AquaPapi.Components
                 inputX += 1;  // Move right with 'D'
             }
 
-            // Apply faster movement on the X-axis if there's input
             if (inputX != 0)
             {
                 velocity.X = inputX * Speed * 1.5f;  // Increase speed for horizontal movement
