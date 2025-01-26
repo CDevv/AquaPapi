@@ -31,5 +31,13 @@ namespace AquaPapi.Scenes
 
             streamPlayer.Play();
         }
+
+        private void OnGroundCollision(Node2D body)
+        {
+            Global.Level++;
+            GD.Print("level 2");
+
+            GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToFile, "res://scenes/levels/second_level.tscn");
+        }
     }
 }

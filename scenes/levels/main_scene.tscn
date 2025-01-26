@@ -1,34 +1,31 @@
 [gd_scene load_steps=28 format=3 uid="uid://buqu04u666uph"]
 
-[ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="1_5aoco"]
-[ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_qmpyw"]
-[ext_resource type="PackedScene" uid="uid://daft73gb52td2" path="res://scenes/components/garbage.tscn" id="2_t1uja"]
-[ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_ahl6h"]
-[ext_resource type="AudioStream" uid="uid://csh5u51bdhaf1" path="res://sounds/deepSong.wav" id="4_4w1kv"]
-[ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
-[ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
-[ext_resource type="PackedScene" path="res://scenes/components/mine.tscn" id="8_elq6v"]
-[ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_35ln3"]
-[ext_resource type="Texture2D" uid="uid://c6j1d6cnt8eos" path="res://assets/Chain.png" id="10_rno0w"]
-[ext_resource type="Texture2D" uid="uid://bu23oebbt5udr" path="res://assets/Cave.png" id="10_ullnf"]
-[ext_resource type="Texture2D" uid="uid://csxl6qh3gwlpu" path="res://assets/Lava_and_1st_level.png" id="12_5ggxa"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymec3"]
-atlas = ExtResource("9_35ln3")
-region = Rect2(0, 0, 256, 122)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wn5l4"]
-atlas = ExtResource("9_35ln3")
-region = Rect2(0, 122, 256, 122)
+[ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_cwuyv"]
+[ext_resource type="PackedScene" uid="uid://daft73gb52td2" path="res://scenes/components/garbage.tscn" id="2_gakv6"]
+[ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_3ynwj"]
+[ext_resource type="AudioStream" uid="uid://csh5u51bdhaf1" path="res://sounds/deepSong.wav" id="4_uphdq"]
+[ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="5_l4lvl"]
+[ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="6_sts1h"]
+[ext_resource type="Texture2D" uid="uid://cwb3espefmhgb" path="res://assets/boat_1.png" id="7_mxksg"]
+[ext_resource type="Texture2D" uid="uid://brodygkpl72pi" path="res://assets/boat_2.png" id="8_002f0"]
+[ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_s5r31"]
+[ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="10_b5813"]
+[ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="11_eau02"]
+[ext_resource type="Texture2D" uid="uid://c6j1d6cnt8eos" path="res://assets/Chain.png" id="12_xpgwm"]
+[ext_resource type="Texture2D" uid="uid://bu23oebbt5udr" path="res://assets/Cave.png" id="13_ra33t"]
+[ext_resource type="Texture2D" uid="uid://csxl6qh3gwlpu" path="res://assets/Lava_and_1st_level.png" id="14_i66eu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_krg77"]
 animations = [{
 "frames": [{
 "duration": 5.0,
-"texture": SubResource("AtlasTexture_ymec3")
+"texture": ExtResource("7_mxksg")
 }, {
 "duration": 5.0,
-"texture": SubResource("AtlasTexture_wn5l4")
+"texture": ExtResource("8_002f0")
+}, {
+"duration": 5.0,
+"texture": ExtResource("9_s5r31")
 }],
 "loop": true,
 "name": &"default",
@@ -38,21 +35,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu1yg"]
 size = Vector2(184, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh6u"]
-size = Vector2(1080, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxqj7"]
 size = Vector2(24, 2872)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyh6u"]
+size = Vector2(1080, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ly7j"]
 size = Vector2(1080, 2856)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8bhy"]
-atlas = ExtResource("12_5ggxa")
+atlas = ExtResource("14_i66eu")
 region = Rect2(87, 9, 169, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7li1l"]
-atlas = ExtResource("12_5ggxa")
+atlas = ExtResource("14_i66eu")
 region = Rect2(87, 58, 169, 49)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lhjkd"]
@@ -70,11 +67,11 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h5eet"]
-atlas = ExtResource("12_5ggxa")
+atlas = ExtResource("14_i66eu")
 region = Rect2(129, 147, 42, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hmb37"]
-atlas = ExtResource("12_5ggxa")
+atlas = ExtResource("14_i66eu")
 region = Rect2(129, 111, 42, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nfj0w"]
@@ -92,7 +89,7 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hctbl"]
-atlas = ExtResource("12_5ggxa")
+atlas = ExtResource("14_i66eu")
 region = Rect2(89, 192, 133, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uk37"]
@@ -107,17 +104,17 @@ animations = [{
 }]
 
 [node name="MainScene" type="Node2D"]
-script = ExtResource("1_qmpyw")
-GarbagePackedScene = ExtResource("2_t1uja")
-BubblePackedScene = ExtResource("3_ahl6h")
+script = ExtResource("1_cwuyv")
+GarbagePackedScene = ExtResource("2_gakv6")
+BubblePackedScene = ExtResource("3_3ynwj")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_4w1kv")
+stream = ExtResource("4_uphdq")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1080.0
 offset_bottom = 3240.0
-texture = ExtResource("4_jx711")
+texture = ExtResource("5_l4lvl")
 
 [node name="Camera" type="Camera2D" parent="."]
 limit_left = 0
@@ -125,7 +122,8 @@ limit_top = 0
 limit_right = 1080
 limit_bottom = 3240
 
-[node name="Player" parent="." instance=ExtResource("1_5aoco")]
+[node name="Player" parent="." instance=ExtResource("6_sts1h")]
+z_index = 2
 position = Vector2(561, 331)
 scale = Vector2(0.5, 0.5)
 
@@ -133,7 +131,7 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(544, 328)
 scale = Vector2(1.16211, 1.10938)
 sprite_frames = SubResource("SpriteFrames_krg77")
-frame_progress = 0.00343741
+frame_progress = 0.979538
 
 [node name="Boat" type="StaticBody2D" parent="."]
 position = Vector2(440, 368)
@@ -148,6 +146,20 @@ offset_right = 184.0
 offset_bottom = 16.0
 color = Color(1, 1, 1, 0)
 
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Collision2" type="CollisionShape2D" parent="Walls"]
+z_index = 2
+position = Vector2(-12, 1820)
+shape = SubResource("RectangleShape2D_kxqj7")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
+[node name="Collision3" type="CollisionShape2D" parent="Walls"]
+z_index = 2
+position = Vector2(1092, 1820)
+shape = SubResource("RectangleShape2D_kxqj7")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 3240)
 collision_layer = 5
@@ -159,17 +171,13 @@ position = Vector2(540, 8)
 shape = SubResource("RectangleShape2D_iyh6u")
 debug_color = Color(0.139507, 0.00609044, 0.140961, 0.42)
 
-[node name="Collision2" type="CollisionShape2D" parent="Ground"]
-z_index = 2
-position = Vector2(-12, -1420)
-shape = SubResource("RectangleShape2D_kxqj7")
-debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+[node name="GroundArea" type="Area2D" parent="Ground"]
 
-[node name="Collision3" type="CollisionShape2D" parent="Ground"]
+[node name="Collision2" type="CollisionShape2D" parent="Ground/GroundArea"]
 z_index = 2
-position = Vector2(1092, -1420)
-shape = SubResource("RectangleShape2D_kxqj7")
-debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+position = Vector2(540, 8)
+shape = SubResource("RectangleShape2D_iyh6u")
+debug_color = Color(0.139507, 0.00609044, 0.140961, 0.42)
 
 [node name="WaterArea" type="Area2D" parent="."]
 position = Vector2(0, 384)
@@ -185,45 +193,46 @@ shape = SubResource("RectangleShape2D_3ly7j")
 
 [node name="BubblesContainer" type="Node" parent="."]
 
-[node name="CanvasLayer" parent="." instance=ExtResource("7_468w5")]
+[node name="UserInterface" parent="." instance=ExtResource("10_b5813")]
 
-[node name="Mine" parent="." instance=ExtResource("8_elq6v")]
+[node name="Mine" parent="." instance=ExtResource("11_eau02")]
 position = Vector2(179, 3016)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Mine"]
 position = Vector2(-16, 148)
-texture = ExtResource("10_rno0w")
+texture = ExtResource("12_xpgwm")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(708, 3085)
 scale = Vector2(0.9375, 1)
-texture = ExtResource("10_rno0w")
+texture = ExtResource("12_xpgwm")
 
-[node name="Mine2" parent="Sprite2D2" instance=ExtResource("8_elq6v")]
+[node name="Mine2" parent="Sprite2D2" instance=ExtResource("11_eau02")]
 position = Vector2(16, -146)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2"]
 position = Vector2(702, 3063)
-texture = ExtResource("10_rno0w")
+texture = ExtResource("12_xpgwm")
 
-[node name="Mine2" parent="Sprite2D2/Sprite2D2" instance=ExtResource("8_elq6v")]
+[node name="Mine2" parent="Sprite2D2/Sprite2D2" instance=ExtResource("11_eau02")]
 position = Vector2(16, -146)
 
-[node name="Mine3" parent="." instance=ExtResource("8_elq6v")]
+[node name="Mine3" parent="." instance=ExtResource("11_eau02")]
 position = Vector2(1019, 2929)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mine3"]
 
-[node name="Mine4" parent="." instance=ExtResource("8_elq6v")]
+[node name="Mine4" parent="." instance=ExtResource("11_eau02")]
 position = Vector2(426, 3133)
 Type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Mine4"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(451, 3056)
 scale = Vector2(7.38824, 2.14516)
-texture = ExtResource("10_ullnf")
+texture = ExtResource("13_ra33t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2068, 209)
@@ -239,3 +248,5 @@ sprite_frames = SubResource("SpriteFrames_nfj0w")
 position = Vector2(2035, 577)
 scale = Vector2(4.53125, 4.53125)
 sprite_frames = SubResource("SpriteFrames_8uk37")
+
+[connection signal="area_entered" from="Ground/GroundArea" to="." method="OnGroundCollision"]

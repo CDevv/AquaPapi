@@ -60,6 +60,8 @@ namespace AquaPapi.Autoload
             GetUpgradesInfo();
         }
 
+
+
         private void LoadCursor()
         {
             var arrow = ResourceLoader.Load("res://assets/cursor_normal.png");

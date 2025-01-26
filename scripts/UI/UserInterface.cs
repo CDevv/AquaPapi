@@ -42,7 +42,7 @@ namespace AquaPapi.UI
             ToggleStatsUI(false);
         }
 
-        private void ToggleStatsUI(bool toggle)
+        public void ToggleStatsUI(bool toggle)
         {
             if (toggle)
             {
@@ -103,8 +103,7 @@ namespace AquaPapi.UI
             ToggleStatsUI(true);
             shopInterface.Hide();
 
-            play.Visible = false;
-            shop.Visible = false;
+            HideMainButtons();
 
             global.CurrentScene.Player.PlayAnimation($"falling-{global.SuitLevel+1}");
 
@@ -123,6 +122,17 @@ namespace AquaPapi.UI
             play.Hide();
             shop.Hide();
             shopInterface.Show();
+        }
+
+        public void HideMainButtons()
+        {
+            play.Visible = false;
+            shop.Visible = false;
+        }
+
+        public void ShowTreats()
+        {
+            treatsContainer.Show();
         }
     }
 }

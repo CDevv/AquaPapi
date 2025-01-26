@@ -12,6 +12,9 @@ namespace AquaPapi.Abstractions
 {
     public partial class BaseScene : Node2D
     {
+        [Export]
+        public int GenCount { get; set; } = 25;
+
         protected Global Global { get; set; }
         public Player Player { get; set; }
         public Camera2D Camera { get; protected set; }
@@ -31,14 +34,14 @@ namespace AquaPapi.Abstractions
             Camera = GetNode<Camera2D>("Camera");
             WaterArea = GetNode<Area2D>("WaterArea");
             AreaShape = GetNode<CollisionShape2D>("%WaterShape");
-            UserInterface = GetNode<UserInterface>("CanvasLayer");
-
-            UserInterface.UpdateInterface();
+            UserInterface = GetNodeOrNull<UserInterface>("UserInterface");
 
             Global.CurrentScene = this;
 
             GenerateGarbage();
             GenerateBubbles();
+
+            UserInterface.UpdateInterface();
         }
 
         public void GenerateGarbage()
@@ -49,7 +52,7 @@ namespace AquaPapi.Abstractions
             int[] types = Global.GarbageInfo[level].Keys.ToArray();
             float[] values = Global.GarbageInfo[level].Values.Select(x => x[1]).ToArray();
 
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < GenCount; i++)
             {
                 float targetX = (float)GD.RandRange(rectStart.X, rectEnd.X);
                 float targetY = (float)GD.RandRange(rectStart.Y, rectEnd.Y);
@@ -75,7 +78,7 @@ namespace AquaPapi.Abstractions
             int[] types = Global.BubblesInfo[level].Keys.ToArray();
             float[] values = Global.BubblesInfo[level].Values.Select(x => x[1]).ToArray();
 
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < GenCount; i++)
             {
                 float targetX = (float)GD.RandRange(rectStart.X, rectEnd.X);
                 float targetY = (float)GD.RandRange(rectStart.Y, rectEnd.Y);
