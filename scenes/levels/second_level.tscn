@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d353o2g5n81uh"]
+[gd_scene load_steps=26 format=3 uid="uid://d353o2g5n81uh"]
 
 [ext_resource type="Texture2D" uid="uid://bdfupgcouu2te" path="res://assets/cave_background.png" id="1_16qvm"]
 [ext_resource type="Script" path="res://scripts/scenes/SecondLevel.cs" id="1_17otd"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_yu4ja"]
 [ext_resource type="Texture2D" uid="uid://dgulfyiavui5j" path="res://assets/Cave_fish.png" id="5_jls7b"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="6_wfbaq"]
+[ext_resource type="Texture2D" uid="uid://bsumxe5v6vg76" path="res://assets/Half_Shop.png" id="9_2wrlq"]
+[ext_resource type="Texture2D" uid="uid://ck6hoijtwbaq4" path="res://assets/Platform_for_levl_2.png" id="10_p37yu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7gy"]
 size = Vector2(1086, 36)
@@ -69,6 +71,36 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q58t7"]
 size = Vector2(1080, 7577)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x244g"]
+atlas = ExtResource("9_2wrlq")
+region = Rect2(31, 0, 40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c3m5o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x244g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfhdg"]
+atlas = ExtResource("10_p37yu")
+region = Rect2(0, 0, 192, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ffidc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfhdg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Second_Level" type="Node2D"]
 script = ExtResource("1_17otd")
 GenCount = 80
@@ -96,9 +128,10 @@ scale = Vector2(0.5, 0.5)
 [node name="ShopStop" type="StaticBody2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="ShopStop"]
+visible = false
 position = Vector2(533, 626)
 shape = SubResource("RectangleShape2D_1p7gy")
-debug_color = Color(0.359737, 0.156385, 0.298517, 0.42)
+debug_color = Color(0.360784, 0.156863, 0.298039, 0)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 8212)
@@ -165,3 +198,17 @@ shape = SubResource("RectangleShape2D_q58t7")
 [node name="GarbageContainer" type="Node" parent="."]
 
 [node name="BubblesContainer" type="Node" parent="."]
+
+[node name="Area2D7" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D7"]
+position = Vector2(74, 447)
+scale = Vector2(3.875, 4.05)
+sprite_frames = SubResource("SpriteFrames_c3m5o")
+
+[node name="Area2D8" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D8"]
+position = Vector2(230, 613)
+scale = Vector2(3.88542, 2.09063)
+sprite_frames = SubResource("SpriteFrames_ffidc")

@@ -1,0 +1,128 @@
+[gd_scene load_steps=13 format=3 uid="uid://cbby3cvcf5hc"]
+
+[ext_resource type="Texture2D" uid="uid://bdfupgcouu2te" path="res://assets/cave_background.png" id="1_16qvm"]
+[ext_resource type="AudioStream" uid="uid://dj3oo1k6668r1" path="res://sounds/spotifydown.com - Underwater Cave - Brandon Fiechter.mp3" id="1_ne68c"]
+[ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="2_6e1t5"]
+[ext_resource type="Texture2D" uid="uid://dgulfyiavui5j" path="res://assets/Cave_fish.png" id="5_jls7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okywd"]
+size = Vector2(1087, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvmqg"]
+size = Vector2(8, 8253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2qwf"]
+atlas = ExtResource("5_jls7b")
+region = Rect2(0, 0, 82, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1iuci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2qwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ge0u"]
+atlas = ExtResource("5_jls7b")
+region = Rect2(88, 0, 82, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gelg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ge0u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3wvs"]
+atlas = ExtResource("5_jls7b")
+region = Rect2(162, 3, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mp8p5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3wvs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Second_Level" type="Node2D"]
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ne68c")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_top = 80.0
+offset_right = 1080.0
+offset_bottom = 8312.0
+texture = ExtResource("1_16qvm")
+
+[node name="Camera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1080
+limit_bottom = 3240
+
+[node name="Player" parent="." instance=ExtResource("2_6e1t5")]
+position = Vector2(539, 180)
+scale = Vector2(0.5, 0.5)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 3240)
+collision_layer = 5
+collision_mask = 5
+
+[node name="Collision" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(537.5, 5065)
+shape = SubResource("RectangleShape2D_okywd")
+debug_color = Color(0.139507, 0.00609044, 0.140961, 0.42)
+
+[node name="Collision2" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(-1, 1008)
+shape = SubResource("RectangleShape2D_gvmqg")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
+[node name="Collision3" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(1081, 956)
+shape = SubResource("RectangleShape2D_gvmqg")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D2"]
+position = Vector2(1322, 491)
+scale = Vector2(2.64634, 2.38889)
+sprite_frames = SubResource("SpriteFrames_1iuci")
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D3"]
+position = Vector2(1338.25, 322.125)
+scale = Vector2(2.9939, 3.51984)
+sprite_frames = SubResource("SpriteFrames_gelg3")
+
+[node name="Area2D4" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D4"]
+position = Vector2(1326, 186.25)
+scale = Vector2(2.86667, 3.125)
+sprite_frames = SubResource("SpriteFrames_mp8p5")
+
+[node name="Area2D5" type="Area2D" parent="."]
+
+[node name="Area2D6" type="Area2D" parent="."]
