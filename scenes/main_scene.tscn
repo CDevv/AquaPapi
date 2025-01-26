@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://buqu04u666uph"]
+[gd_scene load_steps=28 format=3 uid="uid://buqu04u666uph"]
 
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="1_5aoco"]
 [ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_qmpyw"]
@@ -7,24 +7,28 @@
 [ext_resource type="AudioStream" uid="uid://csh5u51bdhaf1" path="res://sounds/deepSong.wav" id="4_4w1kv"]
 [ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
-[ext_resource type="Texture2D" uid="uid://brodygkpl72pi" path="res://assets/boat_2.png" id="7_lki01"]
-[ext_resource type="Texture2D" uid="uid://cwb3espefmhgb" path="res://assets/boat_1.png" id="8_btn46"]
-[ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="8_elq6v"]
+[ext_resource type="PackedScene" path="res://scenes/components/mine.tscn" id="8_elq6v"]
 [ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_35ln3"]
 [ext_resource type="Texture2D" uid="uid://c6j1d6cnt8eos" path="res://assets/Chain.png" id="10_rno0w"]
 [ext_resource type="Texture2D" uid="uid://bu23oebbt5udr" path="res://assets/Cave.png" id="10_ullnf"]
+[ext_resource type="Texture2D" uid="uid://csxl6qh3gwlpu" path="res://assets/Lava_and_1st_level.png" id="12_5ggxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymec3"]
+atlas = ExtResource("9_35ln3")
+region = Rect2(0, 0, 256, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn5l4"]
+atlas = ExtResource("9_35ln3")
+region = Rect2(0, 122, 256, 122)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_krg77"]
 animations = [{
 "frames": [{
 "duration": 5.0,
-"texture": ExtResource("7_lki01")
+"texture": SubResource("AtlasTexture_ymec3")
 }, {
 "duration": 5.0,
-"texture": ExtResource("8_btn46")
-}, {
-"duration": 5.0,
-"texture": ExtResource("9_35ln3")
+"texture": SubResource("AtlasTexture_wn5l4")
 }],
 "loop": true,
 "name": &"default",
@@ -42,6 +46,65 @@ size = Vector2(24, 2872)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ly7j"]
 size = Vector2(1080, 2856)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8bhy"]
+atlas = ExtResource("12_5ggxa")
+region = Rect2(87, 9, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7li1l"]
+atlas = ExtResource("12_5ggxa")
+region = Rect2(87, 58, 169, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lhjkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8bhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7li1l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5eet"]
+atlas = ExtResource("12_5ggxa")
+region = Rect2(129, 147, 42, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmb37"]
+atlas = ExtResource("12_5ggxa")
+region = Rect2(129, 111, 42, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfj0w"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_h5eet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmb37")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hctbl"]
+atlas = ExtResource("12_5ggxa")
+region = Rect2(89, 192, 133, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8uk37"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hctbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qmpyw")
@@ -70,8 +133,7 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(544, 328)
 scale = Vector2(1.16211, 1.10938)
 sprite_frames = SubResource("SpriteFrames_krg77")
-frame = 1
-frame_progress = 0.602338
+frame_progress = 0.00343741
 
 [node name="Boat" type="StaticBody2D" parent="."]
 position = Vector2(440, 368)
@@ -126,31 +188,54 @@ shape = SubResource("RectangleShape2D_3ly7j")
 [node name="CanvasLayer" parent="." instance=ExtResource("7_468w5")]
 
 [node name="Mine" parent="." instance=ExtResource("8_elq6v")]
-position = Vector2(177, 2990)
+position = Vector2(179, 3016)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Mine"]
 position = Vector2(-16, 148)
 texture = ExtResource("10_rno0w")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(702, 3063)
+position = Vector2(708, 3085)
+scale = Vector2(0.9375, 1)
 texture = ExtResource("10_rno0w")
 
 [node name="Mine2" parent="Sprite2D2" instance=ExtResource("8_elq6v")]
 position = Vector2(16, -146)
 
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D2"]
+position = Vector2(702, 3063)
+texture = ExtResource("10_rno0w")
+
+[node name="Mine2" parent="Sprite2D2/Sprite2D2" instance=ExtResource("8_elq6v")]
+position = Vector2(16, -146)
+
 [node name="Mine3" parent="." instance=ExtResource("8_elq6v")]
-position = Vector2(1019, 2909)
+position = Vector2(1019, 2929)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mine3"]
 
 [node name="Mine4" parent="." instance=ExtResource("8_elq6v")]
-position = Vector2(422, 3112)
+position = Vector2(426, 3133)
 Type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Mine4"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(446, 3032)
+position = Vector2(451, 3056)
 scale = Vector2(7.38824, 2.14516)
 texture = ExtResource("10_ullnf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2068, 209)
+scale = Vector2(3.39793, 2.68878)
+sprite_frames = SubResource("SpriteFrames_lhjkd")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1959, 334)
+scale = Vector2(4.02778, 4.02778)
+sprite_frames = SubResource("SpriteFrames_nfj0w")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(2035, 577)
+scale = Vector2(4.53125, 4.53125)
+sprite_frames = SubResource("SpriteFrames_8uk37")
