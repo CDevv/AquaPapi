@@ -1,17 +1,77 @@
-[gd_scene load_steps=7 format=3 uid="uid://3qh4m6tbt7cf"]
+[gd_scene load_steps=16 format=3 uid="uid://3qh4m6tbt7cf"]
 
 [ext_resource type="AudioStream" uid="uid://dj3oo1k6668r1" path="res://sounds/spotifydown.com - Underwater Cave - Brandon Fiechter.mp3" id="1_r83s3"]
 [ext_resource type="Texture2D" uid="uid://cc5xhcy164k2o" path="res://assets/lava.png" id="2_i2ghp"]
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="3_40n4l"]
+[ext_resource type="Texture2D" uid="uid://csxl6qh3gwlpu" path="res://assets/Lava_and_1st_level.png" id="4_e3j0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsv8a"]
 size = Vector2(1083, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tfwx"]
-size = Vector2(36, 9813)
+size = Vector2(36, 9752)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr8ux"]
+atlas = ExtResource("4_e3j0b")
+region = Rect2(1, 51, 85, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmx5f"]
+atlas = ExtResource("4_e3j0b")
+region = Rect2(1, 10, 85, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxlf8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr8ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmx5f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvjxy"]
+atlas = ExtResource("4_e3j0b")
+region = Rect2(2, 80, 84, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7psex"]
+atlas = ExtResource("4_e3j0b")
+region = Rect2(2, 115, 84, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jtr4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvjxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7psex")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7p5g"]
+atlas = ExtResource("4_e3j0b")
+region = Rect2(3, 150, 84, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1x3v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7p5g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcjfy"]
-size = Vector2(13.5, 9799)
+size = Vector2(16.5, 9726)
 
 [node name="Third_level_lava" type="Node2D"]
 
@@ -46,12 +106,30 @@ debug_color = Color(0.139507, 0.00609044, 0.140961, 0.42)
 
 [node name="Collision2" type="CollisionShape2D" parent="Ground"]
 z_index = 2
-position = Vector2(2, -3386.5)
+position = Vector2(2, -3356)
 shape = SubResource("RectangleShape2D_7tfwx")
 debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ground/Collision2"]
+position = Vector2(1741.27, -3958.5)
+scale = Vector2(3.9467, 5.09756)
+sprite_frames = SubResource("SpriteFrames_cxlf8")
+frame_progress = 0.637478
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Ground/Collision2"]
+position = Vector2(1709.5, -4208.24)
+scale = Vector2(4.03568, 5.67105)
+sprite_frames = SubResource("SpriteFrames_jtr4i")
+frame = 1
+frame_progress = 0.950288
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Ground/Collision2"]
+position = Vector2(1711.55, -4408.19)
+scale = Vector2(3.60595, 3.78506)
+sprite_frames = SubResource("SpriteFrames_1x3v6")
+
 [node name="Collision3" type="CollisionShape2D" parent="Ground"]
 z_index = 2
-position = Vector2(1086.25, -3393.5)
+position = Vector2(1087.75, -3357)
 shape = SubResource("RectangleShape2D_dcjfy")
 debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
