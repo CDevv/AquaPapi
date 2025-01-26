@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://buqu04u666uph"]
+[gd_scene load_steps=19 format=3 uid="uid://buqu04u666uph"]
 
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="1_5aoco"]
 [ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_qmpyw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
 [ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="8_elq6v"]
 [ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_35ln3"]
+[ext_resource type="Texture2D" uid="uid://c6j1d6cnt8eos" path="res://assets/Chain.png" id="10_rno0w"]
 [ext_resource type="Texture2D" uid="uid://bu23oebbt5udr" path="res://assets/Cave.png" id="10_ullnf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymec3"]
@@ -117,7 +118,7 @@ collision_mask = 2
 
 [node name="WaterShape" type="CollisionShape2D" parent="WaterArea"]
 unique_name_in_owner = true
-position = Vector2(540, 1428)
+position = Vector2(538, 1435)
 shape = SubResource("RectangleShape2D_3ly7j")
 
 [node name="GarbageContainer" type="Node" parent="."]
@@ -127,17 +128,29 @@ shape = SubResource("RectangleShape2D_3ly7j")
 [node name="CanvasLayer" parent="." instance=ExtResource("7_468w5")]
 
 [node name="Mine" parent="." instance=ExtResource("8_elq6v")]
-position = Vector2(173, 3086)
+position = Vector2(177, 2990)
 
-[node name="Mine2" parent="." instance=ExtResource("8_elq6v")]
-position = Vector2(711, 3031)
+[node name="Sprite2D2" type="Sprite2D" parent="Mine"]
+position = Vector2(-16, 148)
+texture = ExtResource("10_rno0w")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(702, 3063)
+texture = ExtResource("10_rno0w")
+
+[node name="Mine2" parent="Sprite2D2" instance=ExtResource("8_elq6v")]
+position = Vector2(16, -146)
 
 [node name="Mine3" parent="." instance=ExtResource("8_elq6v")]
-position = Vector2(999, 2910)
+position = Vector2(1019, 2909)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mine3"]
 
 [node name="Mine4" parent="." instance=ExtResource("8_elq6v")]
-position = Vector2(421, 3102)
+position = Vector2(422, 3112)
 Type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Mine4"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(446, 3032)
