@@ -1,0 +1,14 @@
+{
+	"Barracuda":{
+		"Damage": 70,
+		"Speed": 10,
+	},
+	"Pufferfish":{
+		"Damage": 70,
+		"Speed": 10,
+	},
+	"Great White Shark":{
+		"Damage": 70,
+		"Speed": 10,
+	}
+}

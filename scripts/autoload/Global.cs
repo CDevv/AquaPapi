@@ -34,10 +34,26 @@ namespace AquaPapi.Autoload
         public Godot.Collections.Dictionary<int, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> GarbageInfo { get; private set; }
         public Godot.Collections.Dictionary<int, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> BubblesInfo { get; set; }
         public Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> UpgradesInfo { get; set; }
+        public Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<string, int>> ObstaclesInfo { get; set; }
         public RandomNumberGenerator Random { get; private set; }
 
         public int Treats { get; set; }
-        public int Health { get; set; } = 10;
+        private int health = 10;
+
+        public int Health
+        {
+            get { return health; }
+            set 
+            { 
+                health = value;
+
+                if (value == 0)
+                {
+                    GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToFile, "res://scens/levels/main_scene.tscn");
+                }
+            }
+        }
+
         public int MaxHealth { get; set; } = 10;
         public int Oxygen { get; set; } = 5;
         public int MaxOxygen { get; set; } = 5;
@@ -54,13 +70,15 @@ namespace AquaPapi.Autoload
             GarbageInfo = new();
             BubblesInfo = new();
             UpgradesInfo = new();
+            ObstaclesInfo = new();
+
             Random = new RandomNumberGenerator();
+
             GetGarbageInfo();
             GetBubblesInfo();
             GetUpgradesInfo();
+            GetObstaclesInfo();
         }
-
-
 
         private void LoadCursor()
         {
@@ -155,6 +173,26 @@ namespace AquaPapi.Autoload
 
                 UpgradesInfo[item.Key] = typeValues;
             }
+        }
+
+        private void GetObstaclesInfo()
+        {
+            FileAccess obstaclesFile = FileAccess.Open("res://info/obstacles.json", FileAccess.ModeFlags.Read);
+            string obstaclesJson = obstaclesFile.GetAsText();
+            obstaclesFile.Close();
+
+            Godot.Collections.Dictionary<string, Variant> obstaclesDict =
+                (Godot.Collections.Dictionary<string, Variant>)Json.ParseString(obstaclesJson);
+
+            foreach (var item in obstaclesDict)
+            {
+                Godot.Collections.Dictionary<string, int> propInfo =
+                    (Godot.Collections.Dictionary<string, int>)Json.ParseString((string)item.Value);
+
+                ObstaclesInfo[item.Key] = propInfo;
+            }
+
+            GD.Print(ObstaclesInfo);
         }
     }
 }

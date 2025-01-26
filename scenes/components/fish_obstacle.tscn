@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://ck7qjoou0yjut"]
+
+[ext_resource type="Script" path="res://scripts/components/FishObstacle.cs" id="1_5l8yy"]
+[ext_resource type="Texture2D" uid="uid://csxl6qh3gwlpu" path="res://assets/Lava_and_1st_level.png" id="1_82pho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8bhy"]
+atlas = ExtResource("1_82pho")
+region = Rect2(87, 9, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7li1l"]
+atlas = ExtResource("1_82pho")
+region = Rect2(87, 58, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hctbl"]
+atlas = ExtResource("1_82pho")
+region = Rect2(89, 192, 133, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5eet"]
+atlas = ExtResource("1_82pho")
+region = Rect2(129, 147, 42, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmb37"]
+atlas = ExtResource("1_82pho")
+region = Rect2(129, 111, 42, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6cdv6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8bhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7li1l")
+}],
+"loop": true,
+"name": &"Barracuda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hctbl")
+}],
+"loop": true,
+"name": &"Great White Shark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_h5eet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmb37")
+}],
+"loop": true,
+"name": &"Pufferfish",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52245"]
+size = Vector2(36, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afstp"]
+size = Vector2(88, 24)
+
+[node name="FishObstacle" type="Area2D"]
+z_index = 1
+script = ExtResource("1_5l8yy")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6cdv6")
+animation = &"Great White Shark"
+
+[node name="Pufferfish" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_52245")
+disabled = true
+
+[node name="Barracuda" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-26, 2)
+shape = SubResource("RectangleShape2D_afstp")
+disabled = true
+
+[node name="Great White Shark" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -4)
+shape = SubResource("RectangleShape2D_afstp")
+disabled = true
+
+[node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]

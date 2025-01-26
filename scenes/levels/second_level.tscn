@@ -110,6 +110,10 @@ BubblePackedScene = ExtResource("3_yu4ja")
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ne68c")
 
+[node name="OxygenTimer" type="Timer" parent="."]
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1080.0
 offset_bottom = 8232.0
@@ -128,7 +132,6 @@ scale = Vector2(0.5, 0.5)
 [node name="ShopStop" type="StaticBody2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="ShopStop"]
-visible = false
 position = Vector2(533, 626)
 shape = SubResource("RectangleShape2D_1p7gy")
 debug_color = Color(0.360784, 0.156863, 0.298039, 0)
@@ -209,6 +212,6 @@ sprite_frames = SubResource("SpriteFrames_c3m5o")
 [node name="Area2D8" type="Area2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D8"]
-position = Vector2(230, 613)
+position = Vector2(232, 624)
 scale = Vector2(3.88542, 2.09063)
 sprite_frames = SubResource("SpriteFrames_ffidc")

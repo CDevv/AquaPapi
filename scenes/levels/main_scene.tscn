@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://buqu04u666uph"]
+[gd_scene load_steps=29 format=3 uid="uid://buqu04u666uph"]
 
 [ext_resource type="Script" path="res://scripts/scenes/MainScene.cs" id="1_cwuyv"]
 [ext_resource type="PackedScene" uid="uid://daft73gb52td2" path="res://scenes/components/garbage.tscn" id="2_gakv6"]
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_3ynwj"]
 [ext_resource type="AudioStream" uid="uid://csh5u51bdhaf1" path="res://sounds/deepSong.wav" id="4_uphdq"]
+[ext_resource type="PackedScene" uid="uid://ck7qjoou0yjut" path="res://scenes/components/fish_obstacle.tscn" id="4_x13su"]
 [ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="5_l4lvl"]
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="6_sts1h"]
 [ext_resource type="Texture2D" uid="uid://cwb3espefmhgb" path="res://assets/boat_1.png" id="7_mxksg"]
@@ -107,6 +108,12 @@ animations = [{
 script = ExtResource("1_cwuyv")
 GarbagePackedScene = ExtResource("2_gakv6")
 BubblePackedScene = ExtResource("3_3ynwj")
+ObstaclePackedScene = ExtResource("4_x13su")
+
+[node name="OxygenTimer" type="Timer" parent="."]
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uphdq")
@@ -249,4 +256,5 @@ position = Vector2(2035, 577)
 scale = Vector2(4.53125, 4.53125)
 sprite_frames = SubResource("SpriteFrames_8uk37")
 
+[connection signal="timeout" from="ObstacleTimer" to="." method="OnObstacleTimer"]
 [connection signal="area_entered" from="Ground/GroundArea" to="." method="OnGroundCollision"]

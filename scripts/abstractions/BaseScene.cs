@@ -14,8 +14,12 @@ namespace AquaPapi.Abstractions
     {
         [Export]
         public int GenCount { get; set; } = 25;
+        [Export]
+        public int ObstacleGenCount { get; set; } = 5;
 
         protected Global Global { get; set; }
+        public Timer OxygenTimer { get; set; }
+        public Timer ObstacleTimer { get; set; }
         public Player Player { get; set; }
         public Camera2D Camera { get; protected set; }
         public Area2D WaterArea { get; private set; }
@@ -26,15 +30,21 @@ namespace AquaPapi.Abstractions
         public PackedScene GarbagePackedScene { get; private set; }
         [Export]
         public PackedScene BubblePackedScene { get; private set; }
+        [Export]
+        public PackedScene ObstaclePackedScene { get; private set; }
 
         public override void _Ready()
         {
             Global = GetNode<Global>("/root/Global");
+            OxygenTimer = GetNode<Timer>("OxygenTimer");
+            ObstacleTimer = GetNode<Timer>("ObstacleTimer");
             Player = GetNode<Player>("Player");
             Camera = GetNode<Camera2D>("Camera");
             WaterArea = GetNode<Area2D>("WaterArea");
             AreaShape = GetNode<CollisionShape2D>("%WaterShape");
             UserInterface = GetNodeOrNull<UserInterface>("UserInterface");
+
+            ObstacleTimer.Start();
 
             Global.CurrentScene = this;
 
@@ -96,6 +106,43 @@ namespace AquaPapi.Abstractions
             }
         }
 
+        private void GenerateObstacles()
+        {
+            float minY = 0;
+            float maxY = AreaShape.Shape.GetRect().Size.Y;
+            float minX = 0;
+            float maxX = AreaShape.Shape.GetRect().Size.X;
+
+            string[] obstacleTypes = Global.ObstaclesInfo.Keys.ToArray();
+
+            for (int i = 0; i < ObstacleGenCount; i++)
+            {
+                float targetY = (float)GD.RandRange(minY, maxY);
+
+                Vector2 position = new Vector2(maxX - 20, WaterArea.Position.Y + targetY);
+
+                FishObstacle fish = ObstaclePackedScene.Instantiate<FishObstacle>();
+                fish.Position = position;
+
+                int chosenTypeIndex = GD.RandRange(0, obstacleTypes.Length - 1);
+                string chosenType = obstacleTypes[chosenTypeIndex];
+
+                double randomBoolDouble = GD.RandRange(0, 1);
+                bool randomBool = randomBoolDouble == 0 ? false : true;
+
+                fish.OtherSide = randomBool;
+
+                if (randomBool)
+                {
+                    position = new Vector2(10, WaterArea.Position.Y + targetY);
+                    fish.Position = position;
+                }
+
+                AddChild(fish);
+                fish.SetType(chosenType);
+            }
+        }
+
         private void OnGarbageCollision(float value)
         {
             Global.Treats += (int)value;
@@ -111,6 +158,11 @@ namespace AquaPapi.Abstractions
             GD.Print("Oxygen: ", Global.Oxygen);
 
             UserInterface.UpdateInterface();
+        }
+
+        private void OnObstacleTimer()
+        {
+            GenerateObstacles();
         }
     }
 }
