@@ -2,6 +2,7 @@
 using AquaPapi.Components;
 using AquaPapi.UI;
 using Godot;
+using Godot.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace AquaPapi.Abstractions
         public int GenCount { get; set; } = 25;
         [Export]
         public int ObstacleGenCount { get; set; } = 5;
+        [Export]
+        public Array<string> Obstacles { get; set; }
 
         protected Global Global { get; set; }
         public Timer OxygenTimer { get; set; }
@@ -113,7 +116,9 @@ namespace AquaPapi.Abstractions
             float minX = 0;
             float maxX = AreaShape.Shape.GetRect().Size.X;
 
-            string[] obstacleTypes = Global.ObstaclesInfo.Keys.ToArray();
+            //string[] obstacleTypes = Global.ObstaclesInfo.Keys.ToArray();
+            string[] obstacleTypes = Obstacles.ToArray();
+            GD.Print(obstacleTypes);
 
             for (int i = 0; i < ObstacleGenCount; i++)
             {
@@ -158,6 +163,15 @@ namespace AquaPapi.Abstractions
             GD.Print("Oxygen: ", Global.Oxygen);
 
             UserInterface.UpdateInterface();
+        }
+
+        private void OnOxygenTimer()
+        {
+            if (Global.IsInWater)
+            {
+                Global.Oxygen -= 1;
+                UserInterface.UpdateInterface();
+            }
         }
 
         private void OnObstacleTimer()

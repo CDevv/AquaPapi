@@ -76,8 +76,12 @@ namespace AquaPapi.UI
             if (Input.IsActionJustPressed("hideShop"))
             {
                 shopInterface.Hide();
-                play.Show();
-                shop.Show();
+
+                if (!global.IsInWater)
+                {
+                    play.Show();
+                    shop.Show();
+                }
             }
         }
 
@@ -88,6 +92,8 @@ namespace AquaPapi.UI
             oxygenBar.Value = global.Oxygen;
 
             healthBar.SetValue(global.Health, global.MaxHealth);
+
+            global.SaveData();
         }
 
         private void OnButtonPressed()
@@ -133,6 +139,11 @@ namespace AquaPapi.UI
         public void ShowTreats()
         {
             treatsContainer.Show();
+        }
+
+        public void ShowShop()
+        {
+            shopInterface.Show();
         }
     }
 }

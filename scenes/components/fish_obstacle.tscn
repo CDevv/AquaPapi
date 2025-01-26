@@ -64,6 +64,7 @@ size = Vector2(88, 24)
 
 [node name="FishObstacle" type="Area2D"]
 z_index = 1
+collision_layer = 16
 script = ExtResource("1_5l8yy")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

@@ -55,8 +55,8 @@ namespace AquaPapi.Autoload
         }
 
         public int MaxHealth { get; set; } = 10;
-        public int Oxygen { get; set; } = 5;
-        public int MaxOxygen { get; set; } = 5;
+        public int Oxygen { get; set; } = 15;
+        public int MaxOxygen { get; set; } = 15;
         public float MovementSpeed { get; set; } = 100.0f;
         public int Level { get; set; } = 1;
         public int SuitLevel { get; set; } = 0;
@@ -78,6 +78,8 @@ namespace AquaPapi.Autoload
             GetBubblesInfo();
             GetUpgradesInfo();
             GetObstaclesInfo();
+
+            LoadData();
         }
 
         private void LoadCursor()
@@ -193,6 +195,53 @@ namespace AquaPapi.Autoload
             }
 
             GD.Print(ObstaclesInfo);
+        }
+
+        public void SaveData()
+        {
+            Godot.Collections.Dictionary<string, Variant> data = new()
+            {
+                {"Treats", Treats},
+
+                {"SuitLevel", SuitLevel},
+                {"OxygenLevel", OxygenLevel},
+                {"HealthLevel", HealthLevel},
+
+                {"Health", MaxHealth},
+                {"Oxygen", MaxOxygen }
+            };
+
+            var jsonString = Json.Stringify(data);
+
+            var saveFile = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Write);
+            saveFile.StoreLine(jsonString);
+            saveFile.Close();
+        }
+
+        private void LoadData()
+        {
+            if (!FileAccess.FileExists("user://savegame.save"))
+            {
+                return;
+            }
+
+            var saveFile = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Read);
+            string jsonString = saveFile.GetLine();
+            saveFile.Close();
+
+            var data = (Godot.Collections.Dictionary<string, Variant>)Json.ParseString(jsonString);
+
+            Treats = (int)data["Treats"];
+
+            SuitLevel = (int)data["SuitLevel"];
+            OxygenLevel = (int)data["OxygenLevel"];
+            HealthLevel = (int)data["HealthLevel"];
+
+            Health = (int)data["Health"];
+            MaxHealth = (int)data["Health"];
+
+            Oxygen = (int)data["Oxygen"];
+            MaxOxygen = (int)data["Oxygen"];
         }
     }
 }

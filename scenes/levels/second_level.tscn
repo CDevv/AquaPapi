@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d353o2g5n81uh"]
+[gd_scene load_steps=30 format=3 uid="uid://d353o2g5n81uh"]
 
 [ext_resource type="Texture2D" uid="uid://bdfupgcouu2te" path="res://assets/cave_background.png" id="1_16qvm"]
 [ext_resource type="Script" path="res://scripts/scenes/SecondLevel.cs" id="1_17otd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="2_6e1t5"]
 [ext_resource type="PackedScene" uid="uid://daft73gb52td2" path="res://scenes/components/garbage.tscn" id="2_csxv6"]
 [ext_resource type="PackedScene" uid="uid://sxdcloml4xob" path="res://scenes/components/bubble.tscn" id="3_yu4ja"]
+[ext_resource type="PackedScene" uid="uid://ck7qjoou0yjut" path="res://scenes/components/fish_obstacle.tscn" id="4_edarc"]
 [ext_resource type="Texture2D" uid="uid://dgulfyiavui5j" path="res://assets/Cave_fish.png" id="5_jls7b"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="6_wfbaq"]
 [ext_resource type="Texture2D" uid="uid://bsumxe5v6vg76" path="res://assets/Half_Shop.png" id="9_2wrlq"]
@@ -87,6 +88,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw106"]
+size = Vector2(190, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ae0u"]
+size = Vector2(138, 228)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhdg"]
 atlas = ExtResource("10_p37yu")
 region = Rect2(0, 0, 192, 80)
@@ -102,16 +109,32 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Second_Level" type="Node2D"]
+[node name="SecondLevel" type="Node2D"]
 script = ExtResource("1_17otd")
 GenCount = 80
+ObstacleGenCount = 10
+Obstacles = Array[String](["Barracuda", "Pufferfish", "Great White Shark"])
 GarbagePackedScene = ExtResource("2_csxv6")
 BubblePackedScene = ExtResource("3_yu4ja")
+ObstaclePackedScene = ExtResource("4_edarc")
+
+[node name="ShopControl" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ShopControl" type="Label" parent="ShopControl"]
+offset_left = 384.0
+offset_top = 604.0
+offset_right = 650.0
+offset_bottom = 697.0
+theme_override_font_sizes/font_size = 32
+text = "[Q] - Open Shop
+[Esc] - Close Shop"
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_ne68c")
 
 [node name="OxygenTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="ObstacleTimer" type="Timer" parent="."]
 
@@ -203,12 +226,22 @@ shape = SubResource("RectangleShape2D_q58t7")
 
 [node name="BubblesContainer" type="Node" parent="."]
 
-[node name="Area2D7" type="Area2D" parent="."]
+[node name="ShopArea" type="Area2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D7"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ShopArea"]
 position = Vector2(74, 447)
 scale = Vector2(3.875, 4.05)
 sprite_frames = SubResource("SpriteFrames_c3m5o")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="ShopArea"]
+position = Vector2(85, 478)
+shape = SubResource("RectangleShape2D_kw106")
+
+[node name="StaticBody" type="StaticBody2D" parent="ShopArea"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="ShopArea/StaticBody"]
+position = Vector2(59, 494)
+shape = SubResource("RectangleShape2D_3ae0u")
 
 [node name="Area2D8" type="Area2D" parent="."]
 
@@ -221,3 +254,8 @@ sprite_frames = SubResource("SpriteFrames_ffidc")
 position = Vector2(547, 8033)
 scale = Vector2(3.92882, 3.00241)
 texture = ExtResource("11_bx1d3")
+
+[connection signal="timeout" from="OxygenTimer" to="." method="OnOxygenTimer"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="OnObstacleTimer"]
+[connection signal="body_entered" from="ShopArea" to="." method="OnShopAreaEntered"]
+[connection signal="body_exited" from="ShopArea" to="." method="OnShopAreaExited"]

@@ -106,6 +106,7 @@ animations = [{
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cwuyv")
+Obstacles = Array[String](["Barracuda", "Pufferfish", "Great White Shark"])
 GarbagePackedScene = ExtResource("2_gakv6")
 BubblePackedScene = ExtResource("3_3ynwj")
 ObstaclePackedScene = ExtResource("4_x13su")
@@ -256,5 +257,6 @@ position = Vector2(2035, 577)
 scale = Vector2(4.53125, 4.53125)
 sprite_frames = SubResource("SpriteFrames_8uk37")
 
+[connection signal="timeout" from="OxygenTimer" to="." method="OnOxygenTimer"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="OnObstacleTimer"]
 [connection signal="area_entered" from="Ground/GroundArea" to="." method="OnGroundCollision"]
