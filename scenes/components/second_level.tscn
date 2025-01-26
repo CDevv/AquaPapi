@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d353o2g5n81uh"]
+[gd_scene load_steps=22 format=3 uid="uid://d353o2g5n81uh"]
 
 [ext_resource type="Texture2D" uid="uid://bdfupgcouu2te" path="res://assets/cave_background.png" id="1_16qvm"]
 [ext_resource type="AudioStream" uid="uid://dj3oo1k6668r1" path="res://sounds/spotifydown.com - Underwater Cave - Brandon Fiechter.mp3" id="1_ne68c"]
@@ -79,6 +79,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5eet"]
+atlas = ExtResource("4_l0y07")
+region = Rect2(129, 147, 42, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmb37"]
+atlas = ExtResource("4_l0y07")
+region = Rect2(129, 111, 42, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ahpr"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_h5eet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmb37")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hctbl"]
+atlas = ExtResource("4_l0y07")
+region = Rect2(89, 192, 133, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l1f5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hctbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Second_Level" type="Node2D"]
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
@@ -152,3 +189,18 @@ sprite_frames = SubResource("SpriteFrames_gelg3")
 position = Vector2(1326, 186.25)
 scale = Vector2(2.86667, 3.125)
 sprite_frames = SubResource("SpriteFrames_mp8p5")
+
+[node name="Area2D5" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D5"]
+position = Vector2(1959, 334)
+scale = Vector2(4.02778, 4.02778)
+sprite_frames = SubResource("SpriteFrames_8ahpr")
+frame_progress = 0.840307
+
+[node name="Area2D6" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D6"]
+position = Vector2(2035, 577)
+scale = Vector2(4.53125, 4.53125)
+sprite_frames = SubResource("SpriteFrames_l1f5n")
