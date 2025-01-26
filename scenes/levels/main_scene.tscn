@@ -111,7 +111,11 @@ GarbagePackedScene = ExtResource("2_gakv6")
 BubblePackedScene = ExtResource("3_3ynwj")
 ObstaclePackedScene = ExtResource("4_x13su")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(561, 331)
+
 [node name="OxygenTimer" type="Timer" parent="."]
+wait_time = 1.5
 
 [node name="ObstacleTimer" type="Timer" parent="."]
 wait_time = 5.0

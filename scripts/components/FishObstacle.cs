@@ -48,6 +48,7 @@ public partial class FishObstacle : Area2D
 
 	private void OnCollision(Node2D body)
 	{
+		GD.Print("obstacle");
 		EmitSignal(SignalName.Collided);
 
 		global.Health -= (Damage / global.MaxHealth) * 100;

@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bmmxl0nx8x2ts" path="res://assets/Skull_For_the_Cave-sheet.png" id="11_bx1d3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7gy"]
-size = Vector2(1086, 36)
+size = Vector2(562, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdcrp"]
 size = Vector2(1080, 16)
@@ -24,6 +24,27 @@ size = Vector2(15.5, 8329)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4b6d"]
 size = Vector2(16.5, 8329)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x244g"]
+atlas = ExtResource("9_2wrlq")
+region = Rect2(31, 0, 40, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c3m5o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x244g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw106"]
+size = Vector2(190, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ae0u"]
+size = Vector2(138, 228)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2qwf"]
 atlas = ExtResource("5_jls7b")
@@ -73,27 +94,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q58t7"]
 size = Vector2(1080, 7577)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x244g"]
-atlas = ExtResource("9_2wrlq")
-region = Rect2(31, 0, 40, 80)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c3m5o"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x244g")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw106"]
-size = Vector2(190, 260)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ae0u"]
-size = Vector2(138, 228)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfhdg"]
 atlas = ExtResource("10_p37yu")
 region = Rect2(0, 0, 192, 80)
@@ -134,7 +134,7 @@ text = "[Q] - Open Shop
 stream = ExtResource("1_ne68c")
 
 [node name="OxygenTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="ObstacleTimer" type="Timer" parent="."]
 
@@ -156,7 +156,7 @@ scale = Vector2(0.5, 0.5)
 [node name="ShopStop" type="StaticBody2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="ShopStop"]
-position = Vector2(533, 626)
+position = Vector2(271, 626)
 shape = SubResource("RectangleShape2D_1p7gy")
 debug_color = Color(0.360784, 0.156863, 0.298039, 0)
 
@@ -182,6 +182,24 @@ z_index = 2
 position = Vector2(1087.75, -4128.5)
 shape = SubResource("RectangleShape2D_r4b6d")
 debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
+[node name="ShopArea" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ShopArea"]
+position = Vector2(74, 447)
+scale = Vector2(3.875, 4.05)
+sprite_frames = SubResource("SpriteFrames_c3m5o")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="ShopArea"]
+position = Vector2(85, 478)
+shape = SubResource("RectangleShape2D_kw106")
+
+[node name="StaticBody" type="StaticBody2D" parent="ShopArea"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="ShopArea/StaticBody"]
+position = Vector2(59, 494)
+shape = SubResource("RectangleShape2D_3ae0u")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -225,23 +243,6 @@ shape = SubResource("RectangleShape2D_q58t7")
 [node name="GarbageContainer" type="Node" parent="."]
 
 [node name="BubblesContainer" type="Node" parent="."]
-
-[node name="ShopArea" type="Area2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ShopArea"]
-position = Vector2(74, 447)
-scale = Vector2(3.875, 4.05)
-sprite_frames = SubResource("SpriteFrames_c3m5o")
-
-[node name="CollisionShape" type="CollisionShape2D" parent="ShopArea"]
-position = Vector2(85, 478)
-shape = SubResource("RectangleShape2D_kw106")
-
-[node name="StaticBody" type="StaticBody2D" parent="ShopArea"]
-
-[node name="CollisionShape" type="CollisionShape2D" parent="ShopArea/StaticBody"]
-position = Vector2(59, 494)
-shape = SubResource("RectangleShape2D_3ae0u")
 
 [node name="Area2D8" type="Area2D" parent="."]
 

@@ -90,6 +90,7 @@ namespace AquaPapi.UI
             treatsLabel.Text = $"{global.Treats}";
             oxygenBar.MaxValue = global.MaxOxygen;
             oxygenBar.Value = global.Oxygen;
+            GD.Print(global.Oxygen);
 
             healthBar.SetValue(global.Health, global.MaxHealth);
 

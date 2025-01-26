@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://3qh4m6tbt7cf"]
+[gd_scene load_steps=16 format=3 uid="uid://cnghhceyixon1"]
 
 [ext_resource type="AudioStream" uid="uid://dj3oo1k6668r1" path="res://sounds/spotifydown.com - Underwater Cave - Brandon Fiechter.mp3" id="1_r83s3"]
 [ext_resource type="Texture2D" uid="uid://cc5xhcy164k2o" path="res://assets/lava.png" id="2_i2ghp"]

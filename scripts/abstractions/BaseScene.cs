@@ -48,6 +48,7 @@ namespace AquaPapi.Abstractions
             UserInterface = GetNodeOrNull<UserInterface>("UserInterface");
 
             ObstacleTimer.Start();
+            OxygenTimer.Start();
 
             Global.CurrentScene = this;
 
@@ -171,6 +172,25 @@ namespace AquaPapi.Abstractions
             {
                 Global.Oxygen -= 1;
                 UserInterface.UpdateInterface();
+
+                if (Global.Oxygen == 0)
+                {
+                    Global.Oxygen = Global.MaxOxygen;
+                    Global.Health = Global.MaxHealth;
+                    Global.IsInWater = false;
+
+                    if (Global.Level != 1)
+                    {
+                        GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToFile, "res://scenes/levels/main_scene.tscn");
+                    }
+                    else
+                    {
+                        Marker2D marker = GetNode<Marker2D>("Marker2D");
+                        Player.Position = marker.Position;
+                    }
+
+                    UserInterface.UpdateInterface();
+                }
             }
         }
 
