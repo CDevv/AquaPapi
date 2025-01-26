@@ -1,14 +1,83 @@
-[gd_scene load_steps=6 format=3 uid="uid://d353o2g5n81uh"]
+[gd_scene load_steps=17 format=3 uid="uid://d353o2g5n81uh"]
 
 [ext_resource type="Texture2D" uid="uid://bdfupgcouu2te" path="res://assets/cave_background.png" id="1_16qvm"]
 [ext_resource type="AudioStream" uid="uid://dj3oo1k6668r1" path="res://sounds/spotifydown.com - Underwater Cave - Brandon Fiechter.mp3" id="1_ne68c"]
 [ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="2_6e1t5"]
+[ext_resource type="Texture2D" uid="uid://csxl6qh3gwlpu" path="res://assets/Lava_and_1st_level.png" id="4_l0y07"]
+[ext_resource type="Texture2D" uid="uid://dgulfyiavui5j" path="res://assets/Cave_fish.png" id="5_jls7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okywd"]
 size = Vector2(1087, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvmqg"]
 size = Vector2(8, 8253)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8bhy"]
+atlas = ExtResource("4_l0y07")
+region = Rect2(87, 9, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7li1l"]
+atlas = ExtResource("4_l0y07")
+region = Rect2(87, 58, 169, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ijk88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8bhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7li1l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2qwf"]
+atlas = ExtResource("5_jls7b")
+region = Rect2(0, 0, 82, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1iuci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2qwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ge0u"]
+atlas = ExtResource("5_jls7b")
+region = Rect2(88, 0, 82, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gelg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ge0u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3wvs"]
+atlas = ExtResource("5_jls7b")
+region = Rect2(162, 3, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mp8p5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3wvs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Second_Level" type="Node2D"]
 
@@ -53,3 +122,33 @@ z_index = 2
 position = Vector2(1081, 956)
 shape = SubResource("RectangleShape2D_gvmqg")
 debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(2068, 209)
+scale = Vector2(3.39793, 2.68878)
+sprite_frames = SubResource("SpriteFrames_ijk88")
+frame = 1
+frame_progress = 0.226511
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D2"]
+position = Vector2(1322, 491)
+scale = Vector2(2.64634, 2.38889)
+sprite_frames = SubResource("SpriteFrames_1iuci")
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D3"]
+position = Vector2(1338.25, 322.125)
+scale = Vector2(2.9939, 3.51984)
+sprite_frames = SubResource("SpriteFrames_gelg3")
+
+[node name="Area2D4" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D4"]
+position = Vector2(1326, 186.25)
+scale = Vector2(2.86667, 3.125)
+sprite_frames = SubResource("SpriteFrames_mp8p5")
