@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://3qh4m6tbt7cf"]
+
+[ext_resource type="AudioStream" uid="uid://dj3oo1k6668r1" path="res://sounds/spotifydown.com - Underwater Cave - Brandon Fiechter.mp3" id="1_r83s3"]
+[ext_resource type="Texture2D" uid="uid://cc5xhcy164k2o" path="res://assets/lava.png" id="2_i2ghp"]
+[ext_resource type="PackedScene" uid="uid://b1lwsewhti21u" path="res://scenes/components/player.tscn" id="3_40n4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsv8a"]
+size = Vector2(1083, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tfwx"]
+size = Vector2(36, 9813)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcjfy"]
+size = Vector2(13.5, 9799)
+
+[node name="Third_level_lava" type="Node2D"]
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_r83s3")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1080.0
+offset_bottom = 8232.0
+texture = ExtResource("2_i2ghp")
+
+[node name="Camera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1080
+limit_bottom = 8232
+
+[node name="Player" parent="." instance=ExtResource("3_40n4l")]
+position = Vector2(539, 100)
+scale = Vector2(0.5, 0.5)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(0, 8212)
+collision_layer = 5
+collision_mask = 5
+
+[node name="Collision" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(554, 1508)
+shape = SubResource("RectangleShape2D_vsv8a")
+debug_color = Color(0.139507, 0.00609044, 0.140961, 0.42)
+
+[node name="Collision2" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(2, -3386.5)
+shape = SubResource("RectangleShape2D_7tfwx")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
+
+[node name="Collision3" type="CollisionShape2D" parent="Ground"]
+z_index = 2
+position = Vector2(1086.25, -3393.5)
+shape = SubResource("RectangleShape2D_dcjfy")
+debug_color = Color(0.142098, 0.0345219, 0.182275, 0.42)
