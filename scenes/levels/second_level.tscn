@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d353o2g5n81uh"]
+[gd_scene load_steps=27 format=3 uid="uid://d353o2g5n81uh"]
 
 [ext_resource type="Texture2D" uid="uid://bdfupgcouu2te" path="res://assets/cave_background.png" id="1_16qvm"]
 [ext_resource type="Script" path="res://scripts/scenes/SecondLevel.cs" id="1_17otd"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="6_wfbaq"]
 [ext_resource type="Texture2D" uid="uid://bsumxe5v6vg76" path="res://assets/Half_Shop.png" id="9_2wrlq"]
 [ext_resource type="Texture2D" uid="uid://ck6hoijtwbaq4" path="res://assets/Platform_for_levl_2.png" id="10_p37yu"]
+[ext_resource type="Texture2D" uid="uid://bmmxl0nx8x2ts" path="res://assets/Skull_For_the_Cave-sheet.png" id="11_bx1d3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p7gy"]
 size = Vector2(1086, 36)
@@ -215,3 +216,8 @@ sprite_frames = SubResource("SpriteFrames_c3m5o")
 position = Vector2(232, 624)
 scale = Vector2(3.88542, 2.09063)
 sprite_frames = SubResource("SpriteFrames_ffidc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(547, 8033)
+scale = Vector2(3.92882, 3.00241)
+texture = ExtResource("11_bx1d3")
