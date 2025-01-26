@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c6ggso5vwk3ni" path="res://assets/Oxygen_Bar5.png" id="4_h1073"]
 [ext_resource type="Texture2D" uid="uid://ekbijd6f8713" path="res://assets/Button_and_Cursours.png" id="6_fmr5k"]
 [ext_resource type="Texture2D" uid="uid://b3gr75hgpp4nk" path="res://assets/currency.png" id="6_qj6od"]
-[ext_resource type="PackedScene" uid="uid://f1o58tgbrjhw" path="res://scenes/UI/health_bar.tscn" id="7_vi8d2"]
-[ext_resource type="PackedScene" uid="uid://dnji12lw3db2l" path="res://scenes/UI/shop_interface.tscn" id="9_k7p2s"]
+[ext_resource type="PackedScene" path="res://scenes/UI/health_bar.tscn" id="7_vi8d2"]
+[ext_resource type="PackedScene" path="res://scenes/UI/shop_interface.tscn" id="9_k7p2s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adp6i"]
 
