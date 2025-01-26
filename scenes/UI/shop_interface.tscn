@@ -1,0 +1,337 @@
+[gd_scene load_steps=32 format=3 uid="uid://dnji12lw3db2l"]
+
+[ext_resource type="Texture2D" uid="uid://c4y7vg13lmotn" path="res://assets/Shop_menu.png" id="1_5kh5y"]
+[ext_resource type="Script" path="res://scripts/UI/ShopInterface.cs" id="1_bi0an"]
+[ext_resource type="Texture2D" uid="uid://ekbijd6f8713" path="res://assets/Button_and_Cursours.png" id="2_1x8mx"]
+[ext_resource type="Texture2D" uid="uid://b8a5viypophql" path="res://assets/Level_upgrades.png" id="3_5chix"]
+[ext_resource type="Texture2D" uid="uid://c8xohij6cs8wj" path="res://assets/Cat_Sumbarine.png" id="4_qk27x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f8vv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52lhy"]
+texture = ExtResource("2_1x8mx")
+region_rect = Rect2(69.2532, 71.388, 23.1133, 23.1133)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqwqa"]
+texture = ExtResource("2_1x8mx")
+region_rect = Rect2(70, 71.25, 22, 23.0364)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7up1i"]
+texture = ExtResource("2_1x8mx")
+region_rect = Rect2(69.5928, 71.4633, 22.4316, 23.1326)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_47qw0"]
+texture = ExtResource("2_1x8mx")
+region_rect = Rect2(68.6082, 20.4749, 22.8924, 24.9501)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1dmm"]
+atlas = ExtResource("3_5chix")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02674"]
+atlas = ExtResource("3_5chix")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q06jh"]
+atlas = ExtResource("3_5chix")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcpty"]
+atlas = ExtResource("3_5chix")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26i7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1dmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02674")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q06jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcpty")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e3ov"]
+atlas = ExtResource("3_5chix")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd5oe"]
+atlas = ExtResource("3_5chix")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2fve"]
+atlas = ExtResource("3_5chix")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1xxh"]
+atlas = ExtResource("3_5chix")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5q4tm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e3ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd5oe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2fve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1xxh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82yiy"]
+atlas = ExtResource("4_qk27x")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4xg1"]
+atlas = ExtResource("4_qk27x")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkkde"]
+atlas = ExtResource("4_qk27x")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01bsp"]
+atlas = ExtResource("4_qk27x")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iv1sa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82yiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4xg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkkde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01bsp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkt0t"]
+atlas = ExtResource("2_1x8mx")
+region = Rect2(0, 16, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ytx"]
+atlas = ExtResource("2_1x8mx")
+region = Rect2(0, 32, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obdhe"]
+atlas = ExtResource("2_1x8mx")
+region = Rect2(0, 48, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfcki"]
+atlas = ExtResource("2_1x8mx")
+region = Rect2(0, 64, 28, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_672eb"]
+atlas = ExtResource("2_1x8mx")
+region = Rect2(0, 80, 28, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4psx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkt0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ytx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obdhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfcki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_672eb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ShopInterface" type="CanvasLayer"]
+script = ExtResource("1_bi0an")
+
+[node name="Rect" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -164.0
+offset_right = 193.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5kh5y")
+region_rect = Rect2(0, 0, 128.345, 144)
+
+[node name="BuyButtons" type="Control" parent="Rect"]
+anchors_preset = 0
+offset_left = -180.0
+offset_top = -40.0
+offset_right = -180.0
+offset_bottom = -40.0
+
+[node name="SuitButton" type="Button" parent="Rect/BuyButtons"]
+unique_name_in_owner = true
+offset_left = 397.0
+offset_top = 144.0
+offset_right = 448.0
+offset_bottom = 192.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7f8vv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_52lhy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kqwqa")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7up1i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_47qw0")
+
+[node name="OxygenButton" type="Button" parent="Rect/BuyButtons"]
+unique_name_in_owner = true
+offset_left = 395.625
+offset_top = 208.5
+offset_right = 446.625
+offset_bottom = 256.5
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7f8vv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_52lhy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kqwqa")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7up1i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_47qw0")
+
+[node name="HealthButton" type="Button" parent="Rect/BuyButtons"]
+unique_name_in_owner = true
+offset_left = 395.625
+offset_top = 271.5
+offset_right = 446.625
+offset_bottom = 319.5
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7f8vv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_52lhy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kqwqa")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7up1i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_47qw0")
+
+[node name="UpgradeIcons" type="Control" parent="Rect"]
+anchors_preset = 0
+offset_left = -180.0
+offset_top = -40.0
+offset_right = -180.0
+offset_bottom = -40.0
+
+[node name="HealthIcon" type="AnimatedSprite2D" parent="Rect/UpgradeIcons"]
+unique_name_in_owner = true
+position = Vector2(251, 300)
+scale = Vector2(1.76563, 2.01562)
+sprite_frames = SubResource("SpriteFrames_26i7t")
+
+[node name="OxygenIcon" type="AnimatedSprite2D" parent="Rect/UpgradeIcons"]
+unique_name_in_owner = true
+position = Vector2(239, 232)
+scale = Vector2(1.28125, 1.27604)
+sprite_frames = SubResource("SpriteFrames_5q4tm")
+
+[node name="SuitIcon" type="AnimatedSprite2D" parent="Rect/UpgradeIcons"]
+unique_name_in_owner = true
+position = Vector2(250, 168)
+scale = Vector2(1.5, 1.44444)
+sprite_frames = SubResource("SpriteFrames_iv1sa")
+
+[node name="UpgradeBars" type="Control" parent="Rect"]
+anchors_preset = 0
+offset_left = -180.0
+offset_top = -40.0
+offset_right = -180.0
+offset_bottom = -40.0
+
+[node name="HealthUpgradeBar" type="AnimatedSprite2D" parent="Rect/UpgradeBars"]
+unique_name_in_owner = true
+position = Vector2(311, 292)
+scale = Vector2(2.4375, 2.8125)
+sprite_frames = SubResource("SpriteFrames_4psx8")
+frame = 1
+
+[node name="OxygenUpgradeBar" type="AnimatedSprite2D" parent="Rect/UpgradeBars"]
+unique_name_in_owner = true
+position = Vector2(311, 232)
+scale = Vector2(2.4375, 2.8125)
+sprite_frames = SubResource("SpriteFrames_4psx8")
+frame = 1
+
+[node name="SuitUpgradeBar" type="AnimatedSprite2D" parent="Rect/UpgradeBars"]
+unique_name_in_owner = true
+position = Vector2(310, 168)
+scale = Vector2(2.4375, 2.8125)
+sprite_frames = SubResource("SpriteFrames_4psx8")
+frame = 1
+
+[node name="Labels" type="Control" parent="Rect"]
+anchors_preset = 0
+offset_left = -225.0
+offset_top = -195.5
+offset_right = -225.0
+offset_bottom = -195.5
+
+[node name="SuitLabel" type="Label" parent="Rect/Labels"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 384.0
+offset_top = 304.0
+offset_right = 424.0
+offset_bottom = 338.0
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+
+[node name="OxygenLabel" type="Label" parent="Rect/Labels"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 384.0
+offset_top = 371.5
+offset_right = 424.0
+offset_bottom = 405.5
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+
+[node name="HealthLabel" type="Label" parent="Rect/Labels"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 384.0
+offset_top = 431.5
+offset_right = 424.0
+offset_bottom = 465.5
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+
+[connection signal="pressed" from="Rect/BuyButtons/SuitButton" to="." method="OnSuitButton"]
+[connection signal="pressed" from="Rect/BuyButtons/OxygenButton" to="." method="OnOxygenButton"]
+[connection signal="pressed" from="Rect/BuyButtons/HealthButton" to="." method="OnHealthButton"]

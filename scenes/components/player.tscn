@@ -118,7 +118,7 @@ script = ExtResource("1_jgpf0")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4.33898, 4.33898)
 sprite_frames = SubResource("SpriteFrames_vyugn")
-animation = &"hurt-1"
+animation = &"falling-1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.03449e-06, 1.03449e-06)

@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://csh5u51bdhaf1" path="res://sounds/deepSong.wav" id="4_4w1kv"]
 [ext_resource type="Texture2D" uid="uid://cc8ch02d4dsis" path="res://assets/level1.png" id="4_jx711"]
 [ext_resource type="PackedScene" uid="uid://5yp6upiavrhw" path="res://scenes/UI/canvas_layer.tscn" id="7_468w5"]
-[ext_resource type="PackedScene" path="res://scenes/components/mine.tscn" id="8_elq6v"]
+[ext_resource type="PackedScene" uid="uid://dn6yv838487nq" path="res://scenes/components/mine.tscn" id="8_elq6v"]
 [ext_resource type="Texture2D" uid="uid://b1e3uy5jledal" path="res://assets/boat_3.png" id="9_35ln3"]
 [ext_resource type="Texture2D" uid="uid://bu23oebbt5udr" path="res://assets/Cave.png" id="10_ullnf"]
 

@@ -33,15 +33,19 @@ namespace AquaPapi.Autoload
 
         public Godot.Collections.Dictionary<int, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> GarbageInfo { get; private set; }
         public Godot.Collections.Dictionary<int, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> BubblesInfo { get; set; }
+        public Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> UpgradesInfo { get; set; }
         public RandomNumberGenerator Random { get; private set; }
 
-        public int Treats { get; set; }
+        public int Treats { get; set; } = 1000;
         public int Health { get; set; } = 10;
         public int MaxHealth { get; set; } = 10;
         public int Oxygen { get; set; } = 5;
-        public int MaxOxygen { get; private set; } = 5;
+        public int MaxOxygen { get; set; } = 5;
         public float MovementSpeed { get; set; } = 100.0f;
         public int Level { get; set; } = 1;
+        public int SuitLevel { get; set; } = 0;
+        public int OxygenLevel { get; set; } = 0;
+        public int HealthLevel { get; set; } = 0;
 
         public override void _Ready()
         {
@@ -49,9 +53,11 @@ namespace AquaPapi.Autoload
 
             GarbageInfo = new();
             BubblesInfo = new();
+            UpgradesInfo = new();
             Random = new RandomNumberGenerator();
             GetGarbageInfo();
             GetBubblesInfo();
+            GetUpgradesInfo();
         }
 
         private void LoadCursor()
@@ -118,6 +124,34 @@ namespace AquaPapi.Autoload
 
                 int key = int.Parse(item.Key);
                 BubblesInfo[key] = typeValues;
+            }
+        }
+
+        private void GetUpgradesInfo()
+        {
+            FileAccess upgradesFile = FileAccess.Open("res://info/upgrades.json", FileAccess.ModeFlags.Read);
+            string upgradesJson = upgradesFile.GetAsText();
+            upgradesFile.Close();
+
+            Godot.Collections.Dictionary<string, Variant> upgradesDict =
+                (Godot.Collections.Dictionary<string, Variant>)Json.ParseString(upgradesJson);
+
+            foreach (var item in upgradesDict)
+            {
+                Godot.Collections.Dictionary<int, Godot.Collections.Array<float>> typeValues = new();
+                Godot.Collections.Dictionary<Variant, Variant> itemData =
+                    (Godot.Collections.Dictionary<Variant, Variant>)item.Value;
+
+                foreach (var upgradeType in itemData)
+                {
+                    int typeKey = int.Parse((string)upgradeType.Key);
+                    Godot.Collections.Array<float> typeValue =
+                        (Godot.Collections.Array<float>)upgradeType.Value;
+
+                    typeValues[typeKey] = typeValue;
+                }
+
+                UpgradesInfo[item.Key] = typeValues;
             }
         }
     }

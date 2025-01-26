@@ -33,6 +33,8 @@ namespace AquaPapi.Abstractions
             AreaShape = GetNode<CollisionShape2D>("%WaterShape");
             UserInterface = GetNode<UserInterface>("CanvasLayer");
 
+            UserInterface.UpdateInterface();
+
             Global.CurrentScene = this;
 
             GenerateGarbage();

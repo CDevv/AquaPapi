@@ -84,7 +84,6 @@ namespace AquaPapi.Components
             // If in water, apply a stronger gravity effect to avoid gliding
             if (global.IsInWater)
             {
-                GD.Print(GetGravity().Y);
                 velocity.Y += (GetGravity().Y / 3) * 0.1f * (float)delta;  // Increased gravity in water to avoid gliding
             }
             else
@@ -145,6 +144,11 @@ namespace AquaPapi.Components
         public void PlayAnimation(string name)
         {
             sprite.Play(name);
+        }
+
+        public void ChangeSuit(int suit)
+        {
+            sprite.Frame = suit;
         }
     }
 }

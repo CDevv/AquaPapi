@@ -18,6 +18,7 @@ namespace AquaPapi.UI
         private NinePatchRect treatsContainer;
         private AnimatedSprite2D treatsIcon;
         private Label treatsLabel;
+        private ShopInterface shopInterface;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()
@@ -36,6 +37,8 @@ namespace AquaPapi.UI
             treatsIcon = GetNode<AnimatedSprite2D>("%TreatsIcon");
             treatsLabel = GetNode<Label>("%TreatsLabel");
 
+            shopInterface = GetNode<ShopInterface>("ShopInterface");
+
             ToggleStatsUI(false);
         }
 
@@ -48,7 +51,6 @@ namespace AquaPapi.UI
 
             oxygenBack.Visible = toggle;
             oxygenBar.Visible = toggle;
-            treatsContainer.Visible = toggle;
             healthBar.Visible = toggle;
         }
 
@@ -69,6 +71,13 @@ namespace AquaPapi.UI
                     // Start the game logic here (you can add any custom game-start logic you need)
                     StartGame();
                 }
+            }
+
+            if (Input.IsActionJustPressed("hideShop"))
+            {
+                shopInterface.Hide();
+                play.Show();
+                shop.Show();
             }
         }
 
@@ -92,6 +101,7 @@ namespace AquaPapi.UI
             EmitSignal(SignalName.GameStarted);
 
             ToggleStatsUI(true);
+            shopInterface.Hide();
 
             play.Visible = false;
             shop.Visible = false;
@@ -106,6 +116,13 @@ namespace AquaPapi.UI
 
             // Set the global variable to true to indicate the game has started
             global.IsInWater = true;
+        }
+
+        public void OnShopButton()
+        {
+            play.Hide();
+            shop.Hide();
+            shopInterface.Show();
         }
     }
 }
