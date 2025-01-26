@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://5yp6upiavrhw"]
+[gd_scene load_steps=51 format=3 uid="uid://5yp6upiavrhw"]
 
 [ext_resource type="Script" path="res://scripts/UI/UserInterface.cs" id="1_i7mb2"]
 [ext_resource type="Texture2D" uid="uid://ck6d7vk5l2ndj" path="res://assets/UI_Big_Play_Button-sheet.png" id="1_nvj8y"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/UI/health_bar.tscn" id="7_vi8d2"]
 [ext_resource type="Texture2D" uid="uid://c4y7vg13lmotn" path="res://assets/Shop_menu.png" id="8_32kmm"]
 [ext_resource type="Texture2D" uid="uid://b8a5viypophql" path="res://assets/Level_upgrades.png" id="10_ywo60"]
+[ext_resource type="Texture2D" uid="uid://c8xohij6cs8wj" path="res://assets/Cat_Sumbarine.png" id="11_btxth"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adp6i"]
 
@@ -151,6 +152,42 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a1xxh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yyrc"]
+atlas = ExtResource("11_btxth")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myifi"]
+atlas = ExtResource("11_btxth")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5otru"]
+atlas = ExtResource("11_btxth")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ulxb"]
+atlas = ExtResource("11_btxth")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ua76w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yyrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myifi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5otru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ulxb")
 }],
 "loop": true,
 "name": &"default",
@@ -374,6 +411,11 @@ scale = Vector2(1.28125, 1.27604)
 sprite_frames = SubResource("SpriteFrames_x8n5p")
 frame_progress = 0.807424
 
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="NinePatchRect"]
+position = Vector2(70, 128)
+scale = Vector2(1.5, 1.44444)
+sprite_frames = SubResource("SpriteFrames_ua76w")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(684, 441)
 scale = Vector2(2.4375, 2.8125)
@@ -403,7 +445,7 @@ frame = 1
 frame_progress = 0.350392
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
-position = Vector2(418, 376)
+position = Vector2(353, 377)
 scale = Vector2(2.4375, 2.8125)
 sprite_frames = SubResource("SpriteFrames_8k00l")
 frame = 1
