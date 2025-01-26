@@ -135,6 +135,8 @@ namespace AquaPapi.Components
             global.Health -= 1;
             GD.Print("Health: ", global.Health);
 
+            global.CurrentScene.UserInterface.UpdateInterface();
+
             sprite.Play("hurt-1");
             await ToSignal(sprite, AnimatedSprite2D.SignalName.AnimationFinished);
             sprite.Play("falling-1");

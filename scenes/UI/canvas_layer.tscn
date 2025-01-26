@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://5yp6upiavrhw"]
+[gd_scene load_steps=34 format=3 uid="uid://5yp6upiavrhw"]
 
 [ext_resource type="Script" path="res://scripts/UI/UserInterface.cs" id="1_i7mb2"]
 [ext_resource type="Texture2D" uid="uid://ck6d7vk5l2ndj" path="res://assets/UI_Big_Play_Button-sheet.png" id="1_nvj8y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6ggso5vwk3ni" path="res://assets/Oxygen_Bar5.png" id="4_h1073"]
 [ext_resource type="Texture2D" uid="uid://ekbijd6f8713" path="res://assets/Button_and_Cursours.png" id="6_fmr5k"]
 [ext_resource type="Texture2D" uid="uid://b3gr75hgpp4nk" path="res://assets/currency.png" id="6_qj6od"]
+[ext_resource type="PackedScene" uid="uid://f1o58tgbrjhw" path="res://scenes/UI/health_bar.tscn" id="7_vi8d2"]
 [ext_resource type="Texture2D" uid="uid://c4y7vg13lmotn" path="res://assets/Shop_menu.png" id="8_32kmm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adp6i"]
@@ -176,6 +177,9 @@ value = 50.0
 texture_under = ExtResource("4_8byr8")
 texture_progress = ExtResource("4_h1073")
 
+[node name="HealthBar" parent="." instance=ExtResource("7_vi8d2")]
+position = Vector2(32, 88)
+
 [node name="TreatsContainer" type="NinePatchRect" parent="."]
 offset_left = 876.0
 offset_top = 16.0
@@ -207,6 +211,7 @@ theme_override_font_sizes/font_size = 14
 text = "0"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
 offset_left = 223.0
 offset_top = 249.0
 offset_right = 853.0
@@ -287,6 +292,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_anetv")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fkqnx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(731, 443)
 scale = Vector2(2.4375, 2.8125)
 sprite_frames = SubResource("SpriteFrames_8k00l")
@@ -294,13 +300,15 @@ frame = 1
 frame_progress = 0.350392
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(731, 379)
 scale = Vector2(2.4375, 2.8125)
 sprite_frames = SubResource("SpriteFrames_8k00l")
 frame = 1
-frame_progress = 0.350392
+frame_progress = 0.998334
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(731, 504)
 scale = Vector2(2.4375, 2.8125)
 sprite_frames = SubResource("SpriteFrames_8k00l")
@@ -308,6 +316,7 @@ frame = 2
 frame_progress = 0.496166
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(417, 500)
 scale = Vector2(2.4375, 2.8125)
 sprite_frames = SubResource("SpriteFrames_8k00l")
@@ -315,6 +324,7 @@ frame = 1
 frame_progress = 0.350392
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(417, 438)
 scale = Vector2(2.4375, 2.8125)
 sprite_frames = SubResource("SpriteFrames_8k00l")
@@ -322,6 +332,7 @@ frame = 1
 frame_progress = 0.350392
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(418, 376)
 scale = Vector2(2.4375, 2.8125)
 sprite_frames = SubResource("SpriteFrames_8k00l")
