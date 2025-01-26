@@ -36,10 +36,9 @@ namespace AquaPapi.Components
             // Connect the timer's timeout signal to the OnJumpResetTimeout method
             jumpResetTimer.Connect("timeout", new Callable(this, nameof(OnJumpResetTimeout)));
 
-            sprite.Play("idle-1");
+            sprite.Play($"idle-{global.SuitLevel+1}");
 
             GD.Print(global.CurrentScene == null);
-            
         }
 
         public override void _Input(InputEvent @event)
@@ -106,10 +105,12 @@ namespace AquaPapi.Components
             if (Input.IsKeyPressed(Key.A))
             {
                 inputX -= 1;  // Move left with 'A'
+                sprite.FlipH = true;
             }
             if (Input.IsKeyPressed(Key.D))
             {
                 inputX += 1;  // Move right with 'D'
+                sprite.FlipH = false;
             }
 
             if (inputX != 0)
@@ -136,9 +137,9 @@ namespace AquaPapi.Components
 
             global.CurrentScene.UserInterface.UpdateInterface();
 
-            sprite.Play("hurt-1");
+            sprite.Play($"hurt-{global.SuitLevel+1}");
             await ToSignal(sprite, AnimatedSprite2D.SignalName.AnimationFinished);
-            sprite.Play("falling-1");
+            sprite.Play($"falling-{global.SuitLevel+1}");
         }
 
         public void PlayAnimation(string name)
@@ -148,7 +149,7 @@ namespace AquaPapi.Components
 
         public void ChangeSuit(int suit)
         {
-            sprite.Frame = suit;
+            sprite.Play($"idle-{suit+1}");
         }
     }
 }

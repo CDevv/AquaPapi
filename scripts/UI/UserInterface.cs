@@ -106,7 +106,7 @@ namespace AquaPapi.UI
             play.Visible = false;
             shop.Visible = false;
 
-            global.CurrentScene.Player.PlayAnimation("falling-1");
+            global.CurrentScene.Player.PlayAnimation($"falling-{global.SuitLevel+1}");
 
             // You can add additional game start logic here
             GD.Print("Game Started!");

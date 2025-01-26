@@ -36,7 +36,7 @@ namespace AquaPapi.Autoload
         public Godot.Collections.Dictionary<string, Godot.Collections.Dictionary<int, Godot.Collections.Array<float>>> UpgradesInfo { get; set; }
         public RandomNumberGenerator Random { get; private set; }
 
-        public int Treats { get; set; } = 1000;
+        public int Treats { get; set; }
         public int Health { get; set; } = 10;
         public int MaxHealth { get; set; } = 10;
         public int Oxygen { get; set; } = 5;
